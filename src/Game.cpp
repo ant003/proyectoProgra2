@@ -72,7 +72,6 @@ int Game::run()
 	
 	this->view->setMouseTracking(true);
 #endif
-	
 	// Set a black color background or add an image as a background
 	this->view->setBackgroundBrush(QBrush(Qt::white, Qt::SolidPattern));
 	// The scene has infinite size, but we want it has the same size than the view
@@ -83,7 +82,7 @@ int Game::run()
 	// Disable scrollbars because they are not longer needed
 	this->view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	this->view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-	
+	snek->mouseMoveEvent(this->scene->event());
 	// Show the view and enter in application's event loop
 	this->view->show();
 	return exec();
