@@ -23,7 +23,6 @@ Game::~Game()
 
 int Game::run()
 {
-<<<<<<< HEAD
     // Init the random seed
     qsrand(QTime::currentTime().msec());
     // An invisible object that manages all the items
@@ -60,7 +59,6 @@ int Game::run()
     // Show the view and enter in application's event loop
     this->view->show();
     return exec();
-=======
 	// Init the random seed
 	qsrand(QTime::currentTime().msec());
 	
@@ -86,13 +84,7 @@ int Game::run()
 	this->view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	this->view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	
-	//create the snek
-	Snek* snek = new Snek();
-	snek->setSharedRenderer(svgRenderer);
-	scene->addItem(snek);
-	snek->setInitialPos();
 	// Show the view and enter in application's event loop
 	this->view->show();
 	return exec();
->>>>>>> 14de76848a8ef6819695b3e42d5484ab3ca5c411
 }
