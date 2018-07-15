@@ -33,8 +33,6 @@ public:
 	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent* event) override;
 
   protected slots:
-	/// Move the player around the scene
-	void move();
 	/// Detect and react to collisions with other elements
 	void detectCollisions();
 };
