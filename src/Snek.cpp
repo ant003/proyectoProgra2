@@ -12,7 +12,7 @@ const int monsterDelay = 150; // milliseconds
 Snek::Snek()
 {
 	// Set graphic image
-	setElementId( QString("monster%1").arg( qrand() % 3 ) );
+	setElementId("snek");
 //	setFlags(QGraphicsItem::ItemIsSelectable|QGraphicsItem::ItemIsMovable);
 
 	// Pre-load the collision sound SONIDO DE LA SNEK COMIENDO
