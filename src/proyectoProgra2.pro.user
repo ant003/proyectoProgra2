@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
+<<<<<<< HEAD
+<!-- Written by QtCreator 4.6.2, 2018-07-15T15:57:56. -->
+=======
 <!-- Written by QtCreator 3.5.1, 2018-07-15T15:32:19. -->
+>>>>>>> 14de76848a8ef6819695b3e42d5484ab3ca5c411
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -240,7 +244,12 @@
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">proyectoProgra2</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
+<<<<<<< HEAD
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/home/ant003/Documentos/2018/proyectoProgra2/src/proyectoProgra2.pro</value>
+    <value type="bool" key="QmakeProjectManager.QmakeRunConfiguration.UseLibrarySearchPath">true</value>
+=======
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/home/diego/proyectoProgra2/src/proyectoProgra2.pro</value>
+>>>>>>> 14de76848a8ef6819695b3e42d5484ab3ca5c411
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments"></value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">proyectoProgra2.pro</value>
     <value type="bool" key="Qt4ProjectManager.Qt4RunConfiguration.UseDyldImageSuffix">false</value>
