@@ -37,7 +37,7 @@ int Game::run()
   #endif
 
     // Set a black color background or add an image as a background
-    this->view->setBackgroundBrush(QBrush(Qt::black, Qt::SolidPattern));
+    this->view->setBackgroundBrush(QBrush(Qt::white, Qt::SolidPattern));
     // The scene has infinite size, but we want it has the same size than the view
     // This stops the weird behavior of the autoscroll feature of the view being smaller than the
     // scene, because the scene auto-increases when objects are moved

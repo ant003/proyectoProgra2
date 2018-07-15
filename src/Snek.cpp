@@ -43,7 +43,7 @@ virtual void mouseMoveEvent(QGraphicsSceneMouseEvent* event) override
 {
 	setPos(event->x(),(scene()->height() - boundingRect().height()) * 0.5);
 }
-
+/*
 #include "Obstacle.h"
 void Snek::detectCollisions()
 {
@@ -52,7 +52,7 @@ void Snek::detectCollisions()
 	for ( QGraphicsItem* item : items )
 	{
 		// If a graphic item is an obstacle remove it from scene
-		if ( /*Obstacle* obstacle =*/ dynamic_cast<Obstacle*>(item) )
+        if ( /*Obstacle* obstacle =*/ /*dynamic_cast<Obstacle*>(item) )
 		{
 			// Play the collision sound
 			this->collisionSound->play();
@@ -62,4 +62,5 @@ void Snek::detectCollisions()
 			this->move();
 		}
 	}
+
 }
