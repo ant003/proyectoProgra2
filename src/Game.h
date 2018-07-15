@@ -17,7 +17,6 @@ class Game : public QApplication
     QGraphicsView* view;
     /// Parsers the assets svg file
     QSvgRenderer* svgRenderer = nullptr;
-
     public:
       /// Constructor
       Game(int &argc, char **argv, int flags = ApplicationFlags);

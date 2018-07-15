@@ -32,6 +32,8 @@ int Game::run()
     this->view = new QGraphicsView(this->scene);
   #if ! defined(Q_OS_ANDROID) && ! defined(Q_OS_IOS)
     this->view->resize(800, 600);
+	
+	this->view->setMouseTracking(true);
   #endif
 
     // Set a black color background or add an image as a background

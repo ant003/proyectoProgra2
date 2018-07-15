@@ -8,10 +8,12 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-    Game.cpp
+    Game.cpp \
+    Snek.cpp
 
 HEADERS += \
-    Game.h
+    Game.h \
+    Snek.h
 
 RESOURCES += \
     ../assets/resources.qrc
