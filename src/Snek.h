@@ -4,10 +4,10 @@
 
 class QPropertyAnimation;
 class QSoundEffect;
+class QMouseEvent;
 
 
-
-class Snek
+class Snek : public AnimatedObject
 {
 public:
 	Q_OBJECT
@@ -23,6 +23,8 @@ public:
 	QPropertyAnimation* moveAnimation = nullptr;
 
   public:
+	qreal x;
+	qreal y;
 	/// Constructor
 	Snek();
 	/// Destructor
@@ -34,7 +36,6 @@ public:
 
   protected slots:
 	/// Detect and react to collisions with other elements
-	void detectCollisions();
 };
 
 #endif // Snek_H
