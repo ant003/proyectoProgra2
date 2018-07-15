@@ -2,7 +2,7 @@
 #define GAME_H
 
 #include <QApplication>
-
+class Snek;
 class QGraphicsScene;
 class QSvgRenderer;
 class QGraphicsView;
@@ -17,6 +17,7 @@ class Game : public QApplication
     QGraphicsView* view;
     /// Parsers the assets svg file
     QSvgRenderer* svgRenderer = nullptr;
+	Snek* snek;
     public:
       /// Constructor
       Game(int &argc, char **argv, int flags = ApplicationFlags);
