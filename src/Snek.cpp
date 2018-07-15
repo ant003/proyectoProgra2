@@ -9,7 +9,7 @@
 
 const int monsterDelay = 150; // milliseconds
 
-snek::snek()
+Snek::snek()
 {
 	// Set graphic image
 	setElementId( QString("monster%1").arg( qrand() % 3 ) );
@@ -63,4 +63,4 @@ void Snek::detectCollisions()
 		}
 	}
 
-}
+}*/

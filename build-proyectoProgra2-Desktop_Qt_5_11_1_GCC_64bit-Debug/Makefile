@@ -52,13 +52,17 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../src/main.cpp \
 		../src/Game.cpp \
-		../src/Snek.cpp qrc_resources.cpp \
-		moc_Snek.cpp
+		../src/Snek.cpp \
+		../src/AnimatedObject.cpp qrc_resources.cpp \
+		moc_Snek.cpp \
+		moc_AnimatedObject.cpp
 OBJECTS       = main.o \
 		Game.o \
 		Snek.o \
+		AnimatedObject.o \
 		qrc_resources.o \
-		moc_Snek.o
+		moc_Snek.o \
+		moc_AnimatedObject.o
 DIST          = /home/ant003/Qt/5.11.1/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/ant003/Qt/5.11.1/gcc_64/mkspecs/common/unix.conf \
 		/home/ant003/Qt/5.11.1/gcc_64/mkspecs/common/linux.conf \
@@ -249,9 +253,11 @@ DIST          = /home/ant003/Qt/5.11.1/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/ant003/Qt/5.11.1/gcc_64/mkspecs/features/yacc.prf \
 		/home/ant003/Qt/5.11.1/gcc_64/mkspecs/features/lex.prf \
 		../src/proyectoProgra2.pro ../src/Game.h \
-		../src/Snek.h ../src/main.cpp \
+		../src/Snek.h \
+		../src/AnimatedObject.h ../src/main.cpp \
 		../src/Game.cpp \
-		../src/Snek.cpp
+		../src/Snek.cpp \
+		../src/AnimatedObject.cpp
 QMAKE_TARGET  = proyectoProgra2
 DESTDIR       = 
 TARGET        = proyectoProgra2
@@ -674,8 +680,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../assets/resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /home/ant003/Qt/5.11.1/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../src/Game.h ../src/Snek.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../src/main.cpp ../src/Game.cpp ../src/Snek.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../src/Game.h ../src/Snek.h ../src/AnimatedObject.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../src/main.cpp ../src/Game.cpp ../src/Snek.cpp ../src/AnimatedObject.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -714,13 +720,199 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /home/ant003/Qt/5.11.1/gcc_64/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h /home/ant003/Qt/5.11.1/gcc_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_Snek.cpp
+compiler_moc_header_make_all: moc_Snek.cpp moc_AnimatedObject.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_Snek.cpp
-moc_Snek.cpp: ../src/Snek.h \
+	-$(DEL_FILE) moc_Snek.cpp moc_AnimatedObject.cpp
+moc_Snek.cpp: ../src/AnimatedObject.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtSvg/QGraphicsSvgItem \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtSvg/qgraphicssvgitem.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qglobal.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qconfig.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qtcore-config.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qsysinfo.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qlogging.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qflags.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qatomic.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qmutex.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qnumeric.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qversiontagging.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qtguiglobal.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qtgui-config.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qobject.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qnamespace.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qstring.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qchar.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qbytearray.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qrefcount.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qarraydata.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qstringliteral.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qstringview.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qlist.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qalgorithms.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qiterator.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qpair.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qstringlist.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qregexp.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qcoreevent.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qmetatype.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qobject_impl.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qvariant.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qmap.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qdebug.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qhash.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qtextstream.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qiodevice.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qlocale.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qshareddata.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qvector.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qpoint.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qset.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qrect.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qmargins.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qsize.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qpainterpath.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qmatrix.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qpolygon.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qregion.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qdatastream.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qline.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qpixmap.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qcolor.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qrgb.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qrgba64.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qimage.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qpixelformat.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qtransform.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtSvg/qtsvgglobal.h \
+		../src/Snek.h \
 		moc_predefs.h \
 		/home/ant003/Qt/5.11.1/gcc_64/bin/moc
 	/home/ant003/Qt/5.11.1/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/ant003/Qt/5.11.1/gcc_64/mkspecs/linux-g++ -I/home/ant003/Documentos/2018/Programación/proyectoProgra2/src -I/home/ant003/Qt/5.11.1/gcc_64/include -I/home/ant003/Qt/5.11.1/gcc_64/include/QtSvg -I/home/ant003/Qt/5.11.1/gcc_64/include/QtWidgets -I/home/ant003/Qt/5.11.1/gcc_64/include/QtMultimedia -I/home/ant003/Qt/5.11.1/gcc_64/include/QtGui -I/home/ant003/Qt/5.11.1/gcc_64/include/QtNetwork -I/home/ant003/Qt/5.11.1/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../src/Snek.h -o moc_Snek.cpp
+
+moc_AnimatedObject.cpp: /home/ant003/Qt/5.11.1/gcc_64/include/QtSvg/QGraphicsSvgItem \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtSvg/qgraphicssvgitem.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qglobal.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qconfig.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qtcore-config.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qsysinfo.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qlogging.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qflags.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qatomic.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qmutex.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qnumeric.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qversiontagging.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qtguiglobal.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qtgui-config.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qobject.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qnamespace.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qstring.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qchar.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qbytearray.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qrefcount.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qarraydata.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qstringliteral.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qstringview.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qlist.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qalgorithms.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qiterator.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qpair.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qstringlist.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qregexp.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qcoreevent.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qmetatype.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qobject_impl.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qvariant.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qmap.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qdebug.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qhash.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qtextstream.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qiodevice.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qlocale.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qshareddata.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qvector.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qpoint.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qset.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qrect.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qmargins.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qsize.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qpainterpath.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qmatrix.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qpolygon.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qregion.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qdatastream.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qline.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qpixmap.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qcolor.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qrgb.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qrgba64.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qimage.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qpixelformat.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qtransform.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtSvg/qtsvgglobal.h \
+		../src/AnimatedObject.h \
+		moc_predefs.h \
+		/home/ant003/Qt/5.11.1/gcc_64/bin/moc
+	/home/ant003/Qt/5.11.1/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/ant003/Qt/5.11.1/gcc_64/mkspecs/linux-g++ -I/home/ant003/Documentos/2018/Programación/proyectoProgra2/src -I/home/ant003/Qt/5.11.1/gcc_64/include -I/home/ant003/Qt/5.11.1/gcc_64/include/QtSvg -I/home/ant003/Qt/5.11.1/gcc_64/include/QtWidgets -I/home/ant003/Qt/5.11.1/gcc_64/include/QtMultimedia -I/home/ant003/Qt/5.11.1/gcc_64/include/QtGui -I/home/ant003/Qt/5.11.1/gcc_64/include/QtNetwork -I/home/ant003/Qt/5.11.1/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../src/AnimatedObject.h -o moc_AnimatedObject.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -1006,10 +1198,9 @@ Game.o: ../src/Game.cpp /home/ant003/Qt/5.11.1/gcc_64/include/QtWidgets/QGraphic
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Game.o ../src/Game.cpp
 
 Snek.o: ../src/Snek.cpp ../src/Snek.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtWidgets/QApplication \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtWidgets/qapplication.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qtguiglobal.h \
+		../src/AnimatedObject.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtSvg/QGraphicsSvgItem \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtSvg/qgraphicssvgitem.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qglobal.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qconfig.h \
@@ -1031,22 +1222,24 @@ Snek.o: ../src/Snek.cpp ../src/Snek.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qmutex.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qnumeric.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qversiontagging.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qtguiglobal.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qtgui-config.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtWidgets/qtwidgets-config.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qcoreapplication.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qobject.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qnamespace.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qstring.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qchar.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qbytearray.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qrefcount.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qnamespace.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qarraydata.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qstringliteral.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qstringalgorithms.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qstringview.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qstringbuilder.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qobject.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qobjectdefs.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qlist.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qalgorithms.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qiterator.h \
@@ -1062,51 +1255,55 @@ Snek.o: ../src/Snek.cpp ../src/Snek.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qvarlengtharray.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qcontainerfwd.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qobject_impl.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qeventloop.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qwindowdefs.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qwindowdefs_win.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qpoint.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qsize.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qcursor.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtWidgets/qwidget.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qmargins.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qpaintdevice.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qrect.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qpalette.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qcolor.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qrgb.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qrgba64.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qbrush.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qvariant.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qmap.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qdebug.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qhash.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qtextstream.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qiodevice.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qlocale.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qshareddata.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qvector.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qpoint.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qset.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qrect.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qmargins.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qsize.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qpainterpath.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qmatrix.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qpolygon.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qregion.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qwindowdefs_win.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qdatastream.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qiodevice.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qline.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qtransform.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qpainterpath.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qpixmap.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qcolor.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qrgb.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qrgba64.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qimage.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qpixelformat.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qpixmap.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qsharedpointer.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qshareddata.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qhash.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qtransform.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtSvg/qtsvgglobal.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtWidgets/QApplication \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtWidgets/qapplication.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qcoreapplication.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qeventloop.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qcursor.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtWidgets/qwidget.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qpalette.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qbrush.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qfont.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qfontmetrics.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qfontinfo.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtWidgets/qsizepolicy.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qkeysequence.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qevent.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qvariant.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qmap.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qdebug.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qtextstream.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qlocale.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qset.h \
-		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qcontiguouscache.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qurl.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qurlquery.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qfile.h \
@@ -1136,11 +1333,115 @@ Snek.o: ../src/Snek.cpp ../src/Snek.h \
 		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qmath.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Snek.o ../src/Snek.cpp
 
+AnimatedObject.o: ../src/AnimatedObject.cpp /home/ant003/Qt/5.11.1/gcc_64/include/QtWidgets/QGraphicsScene \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qtguiglobal.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qglobal.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qconfig.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qtcore-config.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qsysinfo.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qlogging.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qflags.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qatomic.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qmutex.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qnumeric.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qversiontagging.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qtgui-config.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qobject.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qnamespace.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qstring.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qchar.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qbytearray.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qrefcount.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qarraydata.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qstringliteral.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qstringview.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qlist.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qalgorithms.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qiterator.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qpair.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qstringlist.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qregexp.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qcoreevent.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qmetatype.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qobject_impl.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qpoint.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qrect.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qmargins.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qsize.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qbrush.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qvector.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qcolor.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qrgb.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qrgba64.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qmatrix.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qpolygon.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qregion.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qdatastream.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qiodevice.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qline.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qtransform.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qpainterpath.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qimage.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qpixelformat.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qpixmap.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qshareddata.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qhash.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qfont.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtGui/qpen.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/QTimer \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qtimer.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qbasictimer.h \
+		../src/AnimatedObject.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtSvg/QGraphicsSvgItem \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtSvg/qgraphicssvgitem.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qvariant.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qmap.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qdebug.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qtextstream.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qlocale.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qset.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/ant003/Qt/5.11.1/gcc_64/include/QtSvg/qtsvgglobal.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o AnimatedObject.o ../src/AnimatedObject.cpp
+
 qrc_resources.o: qrc_resources.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources.o qrc_resources.cpp
 
 moc_Snek.o: moc_Snek.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_Snek.o moc_Snek.cpp
+
+moc_AnimatedObject.o: moc_AnimatedObject.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_AnimatedObject.o moc_AnimatedObject.cpp
 
 ####### Install
 
