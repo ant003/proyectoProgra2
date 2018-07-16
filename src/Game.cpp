@@ -54,7 +54,6 @@ int Game::run()
     snek->setSharedRenderer(svgRenderer);
     scene->addItem(snek);
     snek->setInitialPos();
-
     // Show the view and enter in application's event loop
     this->view->show();
     return exec();

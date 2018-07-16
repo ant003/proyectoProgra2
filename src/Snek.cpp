@@ -1,4 +1,5 @@
 #include "Snek.h"
+#include <iostream>
 #include <QApplication>
 #include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>

@@ -11,13 +11,15 @@ SOURCES += \
     Game.cpp \
     Snek.cpp \
     AnimatedObject.cpp \
-    Obstacle.cpp
+    Obstacle.cpp \
+    Food.cpp
 
 HEADERS += \
     Game.h \
     Snek.h \
     AnimatedObject.h \
-    Obstacle.h
+    Obstacle.h \
+    Food.h
 
 RESOURCES += \
     ../assets/resources.qrc
