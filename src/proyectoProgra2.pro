@@ -11,14 +11,16 @@ SOURCES += \
     Game.cpp \
     Snek.cpp \
     AnimatedObject.cpp \
-    Obstacle.cpp \
+    Control.cpp \
+    Item.cpp \
     Food.cpp
 
 HEADERS += \
     Game.h \
     Snek.h \
     AnimatedObject.h \
-    Obstacle.h \
+    Control.h \
+    Item.h \
     Food.h
 
 RESOURCES += \

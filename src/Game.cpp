@@ -6,13 +6,16 @@
 #include <QSoundEffect>
 #include <QTime>
 #include <QTimer>
+#include <QColor>
 
 #include "Snek.h"
 #include "Game.h"
 #include "Snek.h"
+#include "Control.h"
 Game::Game(int &argc, char **argv, int flags)
 	: QApplication(argc, argv, flags)
 {
+
 }
 
 Game::~Game()
@@ -54,6 +57,20 @@ int Game::run()
     snek->setSharedRenderer(svgRenderer);
     scene->addItem(snek);
     snek->setInitialPos();
+    snek->setZValue(qreal(200));
+
+    Control* leftControl = new Control();
+    leftControl->setRect(0,0,this->scene->width()/2,this->scene->height());
+    leftControl->setBrush(QBrush(Qt::blue,Qt::SolidPattern));
+    this->scene->addItem(leftControl);
+    connect ( leftControl, SIGNAL(clicked()), snek, SLOT(moveLeft()) );
+
+    Control* rightControl = new Control();
+    rightControl->setRect(this->scene->width()/2,0,this->scene->width()/2,this->scene->height());
+    rightControl->setBrush(QBrush(Qt::red,Qt::SolidPattern));
+    this->scene->addItem(rightControl);
+    connect ( rightControl, SIGNAL(clicked()), snek, SLOT(moveRight()) );
+
     // Show the view and enter in application's event loop
     this->view->show();
     return exec();

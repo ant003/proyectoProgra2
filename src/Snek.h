@@ -6,7 +6,6 @@ class QPropertyAnimation;
 class QSoundEffect;
 class QMouseEvent;
 
-
 class Snek : public AnimatedObject
 {
 public:
@@ -23,8 +22,6 @@ public:
 	QPropertyAnimation* moveAnimation = nullptr;
 
   public:
-	qreal x;
-	qreal y;
 	/// Constructor
 	Snek();
 	/// Destructor
@@ -32,9 +29,12 @@ public:
 	/// Centers the player in the center bottom of the scene
 	void setInitialPos();
 	/// Called when this item is clicked or tapped by the user
-	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent* event) override;
+    /// Moves left
 
-  protected slots:
+protected slots:
+    void moveLeft();
+    /// Move right
+    void moveRight();
 	/// Detect and react to collisions with other elements
 };
 

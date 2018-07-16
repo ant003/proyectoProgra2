@@ -36,13 +36,20 @@ Snek::~Snek()
 void Snek::setInitialPos()
 {
 	// Place the Snek in the middle bottom of the scene
-	this-> x = (scene()->width() - boundingRect().width()) * 0.5;
-	this-> y = (scene()->height() - boundingRect().height()) * 0.5;
+    qreal x = (scene()->width() - boundingRect().width()) * 0.5;
+    qreal y =scene()->height() - scene()->height()/3;
+   // qreal y = (scene()->height() - boundingRect().height()) * 0.5;
 	setPos(x, y);
 }
 
-void Snek::mouseMoveEvent(QGraphicsSceneMouseEvent* event)
+void Snek::moveLeft()
 {
-	this->x = event->lastPos().x();
-	setPos(this->x,this->y);
+    qreal x = this->pos().x()-10;
+    setPos(x, this->pos().y() );
+}
+
+void Snek::moveRight()
+{
+    qreal x = this->pos().x()+10;
+    setPos(x, this->pos().y() );
 }
