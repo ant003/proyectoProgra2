@@ -34,4 +34,5 @@ class Game : public QApplication
 //      void launchObstacle();
 
 };
+
 #endif // GAME_H

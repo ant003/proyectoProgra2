@@ -15,7 +15,7 @@
 Game::Game(int &argc, char **argv, int flags)
 	: QApplication(argc, argv, flags)
 {
-
+	
 }
 
 Game::~Game()
@@ -26,52 +26,53 @@ Game::~Game()
 
 int Game::run()
 {
-    // Init the random seed
-    qsrand(QTime::currentTime().msec());
-    // An invisible object that manages all the items
-    this->scene = new QGraphicsScene();
-
-    // A visible rectangle of the scene
-    this->view = new QGraphicsView(this->scene);
-  #if ! defined(Q_OS_ANDROID) && ! defined(Q_OS_IOS)
-    this->view->resize(800, 600);
+	// Init the random seed
+	qsrand(QTime::currentTime().msec());
+	// An invisible object that manages all the items
+	this->scene = new QGraphicsScene();
+	
+	// A visible rectangle of the scene
+	this->view = new QGraphicsView(this->scene);
+#if ! defined(Q_OS_ANDROID) && ! defined(Q_OS_IOS)
+	this->view->resize(800, 600);
 	this->view->setMouseTracking(true);
-  #endif
-
-    // Set a black color background or add an image as a background
-    this->view->setBackgroundBrush(QBrush(Qt::white, Qt::SolidPattern));
-    // The scene has infinite size, but we want it has the same size than the view
-    // This stops the weird behavior of the autoscroll feature of the view being smaller than the
-    // scene, because the scene auto-increases when objects are moved
-    this->scene->setSceneRect( this->view->rect() );
-
-    // Disable scrollbars because they are not longer needed
-    this->view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    this->view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-
-    // Load the graphic resources
-    this->svgRenderer = new QSvgRenderer(QString("://assets.svg"), this);
-
-    // Create the player control
-    Snek* snek = new Snek();
-    snek->setSharedRenderer(svgRenderer);
-    scene->addItem(snek);
-    snek->setInitialPos();
-    snek->setZValue(qreal(200));
-
-    Control* leftControl = new Control();
-    leftControl->setRect(0,0,this->scene->width()/2,this->scene->height());
-    leftControl->setBrush(QBrush(Qt::blue,Qt::SolidPattern));
-    this->scene->addItem(leftControl);
-    connect ( leftControl, SIGNAL(clicked()), snek, SLOT(moveLeft()) );
-
-    Control* rightControl = new Control();
-    rightControl->setRect(this->scene->width()/2,0,this->scene->width()/2,this->scene->height());
-    rightControl->setBrush(QBrush(Qt::red,Qt::SolidPattern));
-    this->scene->addItem(rightControl);
-    connect ( rightControl, SIGNAL(clicked()), snek, SLOT(moveRight()) );
-
-    // Show the view and enter in application's event loop
-    this->view->show();
-    return exec();
+#endif
+	
+	// Set a black color background or add an image as a background
+	this->view->setBackgroundBrush(QBrush(Qt::white, Qt::SolidPattern));
+	// The scene has infinite size, but we want it has the same size than the view
+	// This stops the weird behavior of the autoscroll feature of the view being smaller than the
+	// scene, because the scene auto-increases when objects are moved
+	this->scene->setSceneRect( this->view->rect() );
+	
+	// Disable scrollbars because they are not longer needed
+	this->view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	this->view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	
+	// Load the graphic resources
+	this->svgRenderer = new QSvgRenderer(QString("://assets.svg"), this);
+	
+	// Create the player control
+	Snek* snek = new Snek();
+	snek->setSharedRenderer(svgRenderer);
+	scene->addItem(snek);
+	snek->setInitialPos();
+	snek->setZValue(qreal(200));
+	
+	Control* leftControl = new Control();
+	leftControl->setRect(0,0,this->scene->width()/2,this->scene->height());
+	leftControl->setBrush(QBrush(qRgb(111, 157, 232),Qt::SolidPattern));
+	this->scene->addItem(leftControl);
+	connect ( leftControl, SIGNAL(clicked()), snek, SLOT(moveLeft()) );
+	
+	Control* rightControl = new Control();
+	rightControl->setRect(this->scene->width()/2,0,this->scene->width()/2,this->scene->height());
+	rightControl->setBrush(QBrush(qRgb(216, 117, 106),Qt::SolidPattern));
+	this->scene->addItem(rightControl);
+	connect ( rightControl, SIGNAL(clicked()), snek, SLOT(moveRight()) );
+	
+	// Show the view and enter in application's event loop
+	this->view->show();
+	return exec();
 }
+

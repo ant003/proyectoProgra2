@@ -3,7 +3,7 @@
 
 #include <QObject>
 #include <QWidget>
-
+#include "Item.h"
 class Food : public Item
 {
 public:

@@ -8,8 +8,6 @@
 #include <QSoundEffect>
 #include <QtMath>
 
-const int monsterDelay = 150; // milliseconds
-
 Snek::Snek()
 {
 	// Set graphic image
