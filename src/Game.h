@@ -29,9 +29,9 @@ class Game : public QApplication
 //    /// Play the given filename as background music
 //      void playBackgroundMusic(const QString& audioFilename);
 
-//    protected slots:
-//      /// Called each time a new enemy must be spwaned
-//      void launchObstacle();
+    protected slots:
+    //      /// Called each time a new food must be spwaned
+    void launchFood();
 
 };
 

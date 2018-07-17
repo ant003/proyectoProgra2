@@ -12,6 +12,7 @@
 #include "Game.h"
 #include "Snek.h"
 #include "Control.h"
+#include "Food.h"
 Game::Game(int &argc, char **argv, int flags)
 	: QApplication(argc, argv, flags)
 {
@@ -71,8 +72,21 @@ int Game::run()
 	this->scene->addItem(rightControl);
 	connect ( rightControl, SIGNAL(clicked()), snek, SLOT(moveRight()) );
 	
+    // Launch an food periodically
+    QTimer* timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, this, &Game::launchFood);
+    timer->start(1500);
+
 	// Show the view and enter in application's event loop
 	this->view->show();
 	return exec();
+}
+
+void Game::launchFood()
+{
+    Food* food = new Food();
+    food->setSharedRenderer(svgRenderer);
+    scene->addItem(food);
+    food->setInitialPos();
 }
 

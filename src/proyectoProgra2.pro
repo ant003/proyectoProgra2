@@ -12,7 +12,6 @@ SOURCES += \
     Snek.cpp \
     AnimatedObject.cpp \
     Control.cpp \
-    Item.cpp \
     Food.cpp
 
 HEADERS += \
@@ -20,7 +19,6 @@ HEADERS += \
     Snek.h \
     AnimatedObject.h \
     Control.h \
-    Item.h \
     Food.h
 
 RESOURCES += \
