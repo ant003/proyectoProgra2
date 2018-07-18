@@ -25,6 +25,8 @@ Game::~Game()
 {
 	delete this->scene;
 	delete this->view;
+	delete this->score;
+	delete this->snek;
 }
 
 int Game::run()
@@ -61,13 +63,14 @@ int Game::run()
 	// Load the graphic resources
 	this->svgRenderer = new QSvgRenderer(QString("://assets.svg"), this);
 	
-	// Create the player control
+	// Create the snake and pass the score control to it
 	Snek* snek = new Snek(score);
 	snek->setSharedRenderer(svgRenderer);
 	scene->addItem(snek);
 	snek->setInitialPos();
 	snek->setZValue(qreal(200));
 	
+	// Create the controls of the player
 	Control* leftControl = new Control();
 	leftControl->setRect(0,0,this->scene->width()/2,this->scene->height());
 	leftControl->setBrush(QBrush(qRgb(111, 157, 232),Qt::SolidPattern));

@@ -25,7 +25,11 @@ public:
 	bool movementRight;
 	bool movementLeft;
 	Score* score;
-	/// Constructor
+	/**
+	*@param Score* score
+	*@brief Constructor of the object that creates it and also communicates itself with the score
+	*@details Because this item know when to detect any collition, it can update the score with ease, so the scene will delegate this
+	*/
 	Snek(Score* score);
 	/// Destructor
 	~Snek();
@@ -37,17 +41,31 @@ public:
 	void moveRight();
 	
 protected slots:
-	/// Will check if any movement was requested
+	/**
+	*@brief checks if either movementRight or movementLeft is at high
+	*@details at a given timer will check if any of the movement booleans is active and if so will move the item in the given direction
+	*/
 	void detectMovement();
-	
+	/**
+	*@brief checks if there's an object colliding with it 
+	*@details at a given timer will check if there's an item colliding with it and if so, generates a list with each one of the items colliding an manages each case to react
+	*/
 	void detectCollisions();
-	
+	/**
+	*@brief if it's given a clicked signal, will change the according movement boolean to true
+	*/
 	void setToRight();
-	
+	/**
+	*@brief if it's given a clicked signal, will change the according movement boolean to true
+	*/
 	void setToLeft();
-	
+	/**
+	*@brief if it's given a released signal, will change the according movement boolean to false
+	*/
 	void setToLeftStop();
-	
+	/**
+	*@brief if it's given a released signal, will change the according movement boolean to false
+	*/
 	void setToRightStop();
 };
 
