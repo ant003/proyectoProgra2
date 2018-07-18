@@ -7,12 +7,12 @@ Control::Control()
 
 void  Control::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-	emit clicked();
+    emit clicked();
 }
 
 void Control::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
-	emit released();
+    emit released();
 }
 
 //void  Control::mousePressEvent(QGraphicsSceneMouseEvent *event)

@@ -18,11 +18,22 @@ protected:
 	QTimer* timer;
 	
 public:
-	/// Constructor
+    /**
+     * @brief AnimatedObject
+     * @param parent
+     */
 	explicit AnimatedObject(QGraphicsItem* parent = nullptr);
-	/// Destructor
+
+    /**
+      * @brief the default constructor
+      */
 	~AnimatedObject();
-	/// Stops the timer, removes this object from the scene, and destroys it
+
+    /**
+     * @brief destroy Stops the timer, removes this object from the scene, and destroys it
+     * @param removeFromScene sets if the object needs to be removed
+     * @param deleteObject sets if the object needs to be deleted
+     */
 	void destroy(bool removeFromScene = true, bool deleteObject = true);
 };
 

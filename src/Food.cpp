@@ -25,14 +25,12 @@ Food::~Food()
 {
 }
 
-
-//move food down
 void Food::move()
 {
 	QList<QGraphicsItem*> items = collidingItems();
 	for ( QGraphicsItem* item : items )
 	{
-		// If a graphic item is an snek remove it from scene
+
 		if ( dynamic_cast<Snek*>(item) )
 		{
 			
@@ -51,7 +49,7 @@ void Food::move()
 
 void Food::setInitialPos()
 {
-	// We chose a random initial position within the screen
+
 	qreal x = qrand() % int(scene()->width() - this->boundingRect().width());
 	qreal y = 0;
 	

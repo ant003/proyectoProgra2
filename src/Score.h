@@ -19,19 +19,42 @@ protected:
 	int score;
 	
 public:
-	/// Constructor
+    /**
+     * @brief Score a constructor for a new score
+     * @param legend the name of the new score, like a label
+     * @param initialScore the number to inicialize the new score
+     * @param color the color of the new score label
+     * @param parent the inherit parent
+     */
 	Score(const QString& legend, int initialScore, QColor color, QGraphicsItem *parent = nullptr);
-	/// Destructor
+
+    /**
+      * @brief the default destructor
+      */
 	~Score();
-	/// Returns a copy of the current score
+    /**
+     * @brief getScore Returns a copy of the current score
+     * @return the current score
+     */
 	inline int getScore() const { return score; }
-	/// Increase the score and updates the view
+
+    /**
+     * @brief increase increase the score and updates the view
+     * @param amount the amount to increase the score
+     */
 	void increase(int amount = 1);
-	/// Decreases the score and updates the view
+
+
+    /**
+     * @brief decrease Decreases the score and updates the view
+     * @param amount the amount to decrease the score
+     */
 	void decrease(int amount = 1);
 	
 protected:
-	/// Updates the interface to match the int attribute score
+    /**
+     * @brief updateScore Updates the interface to match the int attribute score
+     */
 	void updateScore();
 };
 
