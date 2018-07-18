@@ -53,22 +53,26 @@ SOURCES       = ../src/main.cpp \
 		../src/Snek.cpp \
 		../src/AnimatedObject.cpp \
 		../src/Control.cpp \
-		../src/Food.cpp qrc_resources.cpp \
+		../src/Food.cpp \
+		../src/Score.cpp qrc_resources.cpp \
 		moc_Snek.cpp \
 		moc_AnimatedObject.cpp \
 		moc_Control.cpp \
-		moc_Food.cpp
+		moc_Food.cpp \
+		moc_Score.cpp
 OBJECTS       = main.o \
 		Game.o \
 		Snek.o \
 		AnimatedObject.o \
 		Control.o \
 		Food.o \
+		Score.o \
 		qrc_resources.o \
 		moc_Snek.o \
 		moc_AnimatedObject.o \
 		moc_Control.o \
-		moc_Food.o
+		moc_Food.o \
+		moc_Score.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -133,12 +137,14 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		../src/Snek.h \
 		../src/AnimatedObject.h \
 		../src/Control.h \
-		../src/Food.h ../src/main.cpp \
+		../src/Food.h \
+		../src/Score.h ../src/main.cpp \
 		../src/Game.cpp \
 		../src/Snek.cpp \
 		../src/AnimatedObject.cpp \
 		../src/Control.cpp \
-		../src/Food.cpp
+		../src/Food.cpp \
+		../src/Score.cpp
 QMAKE_TARGET  = proyectoProgra2
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = proyectoProgra2
@@ -321,8 +327,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../assets/resources.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../src/Game.h ../src/Snek.h ../src/AnimatedObject.h ../src/Control.h ../src/Food.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../src/main.cpp ../src/Game.cpp ../src/Snek.cpp ../src/AnimatedObject.cpp ../src/Control.cpp ../src/Food.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../src/Game.h ../src/Snek.h ../src/AnimatedObject.h ../src/Control.h ../src/Food.h ../src/Score.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../src/main.cpp ../src/Game.cpp ../src/Snek.cpp ../src/AnimatedObject.cpp ../src/Control.cpp ../src/Food.cpp ../src/Score.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -349,9 +355,9 @@ compiler_rcc_clean:
 qrc_resources.cpp: ../assets/resources.qrc
 	/usr/lib/x86_64-linux-gnu/qt5/bin/rcc -name resources ../assets/resources.qrc -o qrc_resources.cpp
 
-compiler_moc_header_make_all: moc_Snek.cpp moc_AnimatedObject.cpp moc_Control.cpp moc_Food.cpp
+compiler_moc_header_make_all: moc_Snek.cpp moc_AnimatedObject.cpp moc_Control.cpp moc_Food.cpp moc_Score.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_Snek.cpp moc_AnimatedObject.cpp moc_Control.cpp moc_Food.cpp
+	-$(DEL_FILE) moc_Snek.cpp moc_AnimatedObject.cpp moc_Control.cpp moc_Food.cpp moc_Score.cpp
 moc_Snek.cpp: ../src/AnimatedObject.h \
 		../src/Snek.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/diego/proyectoProgra2/src -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtSvg -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtMultimedia -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../src/Snek.h -o moc_Snek.cpp
@@ -362,8 +368,12 @@ moc_AnimatedObject.cpp: ../src/AnimatedObject.h
 moc_Control.cpp: ../src/Control.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/diego/proyectoProgra2/src -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtSvg -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtMultimedia -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../src/Control.h -o moc_Control.cpp
 
-moc_Food.cpp: ../src/Food.h
+moc_Food.cpp: ../src/AnimatedObject.h \
+		../src/Food.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/diego/proyectoProgra2/src -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtSvg -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtMultimedia -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../src/Food.h -o moc_Food.cpp
+
+moc_Score.cpp: ../src/Score.h
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/diego/proyectoProgra2/src -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtSvg -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtMultimedia -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../src/Score.h -o moc_Score.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -386,7 +396,8 @@ Game.o: ../src/Game.cpp ../src/Snek.h \
 		../src/AnimatedObject.h \
 		../src/Game.h \
 		../src/Control.h \
-		../src/Food.h
+		../src/Food.h \
+		../src/Score.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Game.o ../src/Game.cpp
 
 Snek.o: ../src/Snek.cpp ../src/Snek.h \
@@ -399,8 +410,14 @@ AnimatedObject.o: ../src/AnimatedObject.cpp ../src/AnimatedObject.h
 Control.o: ../src/Control.cpp ../src/Control.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Control.o ../src/Control.cpp
 
-Food.o: ../src/Food.cpp ../src/Food.h
+Food.o: ../src/Food.cpp ../src/Snek.h \
+		../src/AnimatedObject.h \
+		../src/Game.h \
+		../src/Food.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Food.o ../src/Food.cpp
+
+Score.o: ../src/Score.cpp ../src/Score.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Score.o ../src/Score.cpp
 
 qrc_resources.o: qrc_resources.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources.o qrc_resources.cpp
@@ -416,6 +433,9 @@ moc_Control.o: moc_Control.cpp
 
 moc_Food.o: moc_Food.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_Food.o moc_Food.cpp
+
+moc_Score.o: moc_Score.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_Score.o moc_Score.cpp
 
 ####### Install
 

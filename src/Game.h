@@ -6,6 +6,7 @@ class Snek;
 class QGraphicsScene;
 class QSvgRenderer;
 class QGraphicsView;
+class Score;
 
 class Game : public QApplication
 {
@@ -18,6 +19,7 @@ class Game : public QApplication
     /// Parsers the assets svg file
     QSvgRenderer* svgRenderer = nullptr;
 	Snek* snek;
+	Score* score;
     public:
       /// Constructor
       Game(int &argc, char **argv, int flags = ApplicationFlags);

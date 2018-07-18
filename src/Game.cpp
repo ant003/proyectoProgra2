@@ -13,6 +13,8 @@
 #include "Snek.h"
 #include "Control.h"
 #include "Food.h"
+#include "Score.h"
+
 Game::Game(int &argc, char **argv, int flags)
 	: QApplication(argc, argv, flags)
 {
@@ -50,6 +52,12 @@ int Game::run()
 	this->view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	this->view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	
+	// A label to show the player score
+	this->score = new Score(tr("Score"), 0, Qt::black);
+	this->score->setPos(5, 0);
+	this->scene->addItem(this->score);
+	this->score->setZValue(qreal(200));
+	
 	// Load the graphic resources
 	this->svgRenderer = new QSvgRenderer(QString("://assets.svg"), this);
 	
@@ -74,11 +82,11 @@ int Game::run()
 	connect ( rightControl, SIGNAL(clicked()), snek, SLOT(setToRight()) );
 	connect ( rightControl, SIGNAL(released()), snek, SLOT(setToRightStop()) );
 	
-    // Launch an food periodically
-    QTimer* timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, this, &Game::launchFood);
-    timer->start(1500);
-
+	// Launch an food periodically
+	QTimer* timer = new QTimer(this);
+	connect(timer, &QTimer::timeout, this, &Game::launchFood);
+	timer->start(1500);
+	
 	// Show the view and enter in application's event loop
 	this->view->show();
 	return exec();
@@ -86,9 +94,9 @@ int Game::run()
 
 void Game::launchFood()
 {
-    Food* food = new Food();
-    food->setSharedRenderer(svgRenderer);
-    scene->addItem(food);
-    food->setInitialPos();
+	Food* food = new Food();
+	food->setSharedRenderer(svgRenderer);
+	scene->addItem(food);
+	food->setInitialPos();
 }
 

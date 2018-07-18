@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Food_t {
-    QByteArrayData data[3];
-    char stringdata0[11];
+    QByteArrayData data[4];
+    char stringdata0[15];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -31,10 +31,11 @@ static const qt_meta_stringdata_Food_t qt_meta_stringdata_Food = {
     {
 QT_MOC_LITERAL(0, 0, 4), // "Food"
 QT_MOC_LITERAL(1, 5, 4), // "move"
-QT_MOC_LITERAL(2, 10, 0) // ""
+QT_MOC_LITERAL(2, 10, 0), // ""
+QT_MOC_LITERAL(3, 11, 3) // "pos"
 
     },
-    "Food\0move\0"
+    "Food\0move\0\0pos"
 };
 #undef QT_MOC_LITERAL
 
@@ -45,7 +46,7 @@ static const uint qt_meta_data_Food[] = {
        0,       // classname
        0,    0, // classinfo
        1,   14, // methods
-       0,    0, // properties
+       1,   20, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
@@ -56,6 +57,9 @@ static const uint qt_meta_data_Food[] = {
 
  // slots: parameters
     QMetaType::Void,
+
+ // properties: name, type, flags
+       3, QMetaType::QPointF, 0x00095103,
 
        0        // eod
 };
@@ -70,11 +74,31 @@ void Food::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
         default: ;
         }
     }
+#ifndef QT_NO_PROPERTIES
+    else if (_c == QMetaObject::ReadProperty) {
+        Food *_t = static_cast<Food *>(_o);
+        Q_UNUSED(_t)
+        void *_v = _a[0];
+        switch (_id) {
+        case 0: *reinterpret_cast< QPointF*>(_v) = _t->pos(); break;
+        default: break;
+        }
+    } else if (_c == QMetaObject::WriteProperty) {
+        Food *_t = static_cast<Food *>(_o);
+        Q_UNUSED(_t)
+        void *_v = _a[0];
+        switch (_id) {
+        case 0: _t->setPos(*reinterpret_cast< QPointF*>(_v)); break;
+        default: break;
+        }
+    } else if (_c == QMetaObject::ResetProperty) {
+    }
+#endif // QT_NO_PROPERTIES
     Q_UNUSED(_a);
 }
 
 const QMetaObject Food::staticMetaObject = {
-    { &QGraphicsSvgItem::staticMetaObject, qt_meta_stringdata_Food.data,
+    { &AnimatedObject::staticMetaObject, qt_meta_stringdata_Food.data,
       qt_meta_data_Food,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
@@ -89,12 +113,12 @@ void *Food::qt_metacast(const char *_clname)
     if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_Food.stringdata0))
         return static_cast<void*>(const_cast< Food*>(this));
-    return QGraphicsSvgItem::qt_metacast(_clname);
+    return AnimatedObject::qt_metacast(_clname);
 }
 
 int Food::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QGraphicsSvgItem::qt_metacall(_c, _id, _a);
+    _id = AnimatedObject::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
@@ -106,6 +130,23 @@ int Food::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
             *reinterpret_cast<int*>(_a[0]) = -1;
         _id -= 1;
     }
+#ifndef QT_NO_PROPERTIES
+   else if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
+            || _c == QMetaObject::ResetProperty || _c == QMetaObject::RegisterPropertyMetaType) {
+        qt_static_metacall(this, _c, _id, _a);
+        _id -= 1;
+    } else if (_c == QMetaObject::QueryPropertyDesignable) {
+        _id -= 1;
+    } else if (_c == QMetaObject::QueryPropertyScriptable) {
+        _id -= 1;
+    } else if (_c == QMetaObject::QueryPropertyStored) {
+        _id -= 1;
+    } else if (_c == QMetaObject::QueryPropertyEditable) {
+        _id -= 1;
+    } else if (_c == QMetaObject::QueryPropertyUser) {
+        _id -= 1;
+    }
+#endif // QT_NO_PROPERTIES
     return _id;
 }
 QT_END_MOC_NAMESPACE

@@ -60,13 +60,15 @@ void Snek::detectMovement()
 void Snek::moveLeft()
 {
     qreal x = this->pos().x()-10;
-    setPos(x, this->pos().y() );
+	if(0<=x)
+		setPos(x, this->pos().y() );
 }
 
 void Snek::moveRight()
 {
     qreal x = this->pos().x()+10;
-    setPos(x, this->pos().y() );
+	if(x<= scene()->width() )
+		setPos(x, this->pos().y() );
 }
 
 void Snek::setToRight()
