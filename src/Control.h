@@ -10,9 +10,11 @@ public:
 
 protected:
     virtual void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
+    virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
 signals:
 //    void clicked(QGraphicsSceneMouseEvent *event);
         void clicked();
+        void released();
 };
 
 #endif // CONTROL_H

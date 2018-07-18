@@ -22,20 +22,30 @@ public:
 	QPropertyAnimation* moveAnimation = nullptr;
 
   public:
+    bool movementRight;
+    bool movementLeft;
 	/// Constructor
 	Snek();
 	/// Destructor
 	~Snek();
 	/// Centers the player in the center bottom of the scene
 	void setInitialPos();
-	/// Called when this item is clicked or tapped by the user
-    /// Moves left
+    /// Move to left
+    void moveLeft();
+    /// Move to right
+    void moveRight();
 
 protected slots:
-    void moveLeft();
-    /// Move right
-    void moveRight();
-	/// Detect and react to collisions with other elements
+    /// Will check if any movement was requested
+    void detectMovement();
+
+    void setToRight();
+
+    void setToLeft();
+
+    void setToLeftStop();
+
+    void setToRightStop();
 };
 
 #endif // Snek_H
