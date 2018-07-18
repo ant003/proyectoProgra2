@@ -62,7 +62,7 @@ int Game::run()
 	this->svgRenderer = new QSvgRenderer(QString("://assets.svg"), this);
 	
 	// Create the player control
-	Snek* snek = new Snek();
+	Snek* snek = new Snek(score);
 	snek->setSharedRenderer(svgRenderer);
 	scene->addItem(snek);
 	snek->setInitialPos();

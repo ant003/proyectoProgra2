@@ -4,17 +4,17 @@
 #include <QObject>
 class Control : public QObject, public QGraphicsRectItem
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    Control();
-
+	Control();
+	
 protected:
-    virtual void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
-    virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
+	virtual void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
+	virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
 signals:
-//    void clicked(QGraphicsSceneMouseEvent *event);
-        void clicked();
-        void released();
+	//    void clicked(QGraphicsSceneMouseEvent *event);
+	void clicked();
+	void released();
 };
 
 #endif // CONTROL_H
