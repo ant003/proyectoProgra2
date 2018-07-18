@@ -64,13 +64,15 @@ int Game::run()
 	leftControl->setRect(0,0,this->scene->width()/2,this->scene->height());
 	leftControl->setBrush(QBrush(qRgb(111, 157, 232),Qt::SolidPattern));
 	this->scene->addItem(leftControl);
-	connect ( leftControl, SIGNAL(clicked()), snek, SLOT(moveLeft()) );
+	connect ( leftControl, SIGNAL(clicked()), snek, SLOT(setToLeft()) );
+	connect ( leftControl, SIGNAL(released()), snek, SLOT(setToLeftStop()) );
 	
 	Control* rightControl = new Control();
 	rightControl->setRect(this->scene->width()/2,0,this->scene->width()/2,this->scene->height());
 	rightControl->setBrush(QBrush(qRgb(216, 117, 106),Qt::SolidPattern));
 	this->scene->addItem(rightControl);
-	connect ( rightControl, SIGNAL(clicked()), snek, SLOT(moveRight()) );
+	connect ( rightControl, SIGNAL(clicked()), snek, SLOT(setToRight()) );
+	connect ( rightControl, SIGNAL(released()), snek, SLOT(setToRightStop()) );
 	
     // Launch an food periodically
     QTimer* timer = new QTimer(this);

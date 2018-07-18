@@ -31,7 +31,7 @@ Snek::Snek()
 
     // Continuously check for collisions
     QTimer* collisionTimer = new QTimer(this);
-    connect(collisionTimer, &QTimer::timeout, this, &Snek::detectMovement());
+    connect(collisionTimer, &QTimer::timeout, this, &Snek::detectMovement);
     collisionTimer->setInterval(25);
     collisionTimer->start();
 
