@@ -67,7 +67,7 @@ void Snek::moveLeft()
 void Snek::moveRight()
 {
     qreal x = this->pos().x()+10;
-	if(x<= scene()->width() )
+    if(x<= scene()->width() - this->boundingRect().width() )
 		setPos(x, this->pos().y() );
 }
 

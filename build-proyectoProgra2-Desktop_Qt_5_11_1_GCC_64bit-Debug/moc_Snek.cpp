@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Snek_t {
-    QByteArrayData data[5];
-    char stringdata0[29];
+    QByteArrayData data[8];
+    char stringdata0[75];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,13 +32,18 @@ struct qt_meta_stringdata_Snek_t {
 static const qt_meta_stringdata_Snek_t qt_meta_stringdata_Snek = {
     {
 QT_MOC_LITERAL(0, 0, 4), // "Snek"
-QT_MOC_LITERAL(1, 5, 8), // "moveLeft"
-QT_MOC_LITERAL(2, 14, 0), // ""
-QT_MOC_LITERAL(3, 15, 9), // "moveRight"
-QT_MOC_LITERAL(4, 25, 3) // "pos"
+QT_MOC_LITERAL(1, 5, 14), // "detectMovement"
+QT_MOC_LITERAL(2, 20, 0), // ""
+QT_MOC_LITERAL(3, 21, 10), // "setToRight"
+QT_MOC_LITERAL(4, 32, 9), // "setToLeft"
+QT_MOC_LITERAL(5, 42, 13), // "setToLeftStop"
+QT_MOC_LITERAL(6, 56, 14), // "setToRightStop"
+QT_MOC_LITERAL(7, 71, 3) // "pos"
 
     },
-    "Snek\0moveLeft\0\0moveRight\0pos"
+    "Snek\0detectMovement\0\0setToRight\0"
+    "setToLeft\0setToLeftStop\0setToRightStop\0"
+    "pos"
 };
 #undef QT_MOC_LITERAL
 
@@ -48,23 +53,29 @@ static const uint qt_meta_data_Snek[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
-       1,   26, // properties
+       5,   14, // methods
+       1,   44, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   24,    2, 0x09 /* Protected */,
-       3,    0,   25,    2, 0x09 /* Protected */,
+       1,    0,   39,    2, 0x09 /* Protected */,
+       3,    0,   40,    2, 0x09 /* Protected */,
+       4,    0,   41,    2, 0x09 /* Protected */,
+       5,    0,   42,    2, 0x09 /* Protected */,
+       6,    0,   43,    2, 0x09 /* Protected */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
 
  // properties: name, type, flags
-       4, QMetaType::QPointF, 0x00095103,
+       7, QMetaType::QPointF, 0x00095103,
 
        0        // eod
 };
@@ -75,8 +86,11 @@ void Snek::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
         Snek *_t = static_cast<Snek *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->moveLeft(); break;
-        case 1: _t->moveRight(); break;
+        case 0: _t->detectMovement(); break;
+        case 1: _t->setToRight(); break;
+        case 2: _t->setToLeft(); break;
+        case 3: _t->setToLeftStop(); break;
+        case 4: _t->setToRightStop(); break;
         default: ;
         }
     }
@@ -128,13 +142,13 @@ int Snek::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 5;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 5)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 2;
+        _id -= 5;
     }
 #ifndef QT_NO_PROPERTIES
    else if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
