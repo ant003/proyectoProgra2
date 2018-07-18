@@ -25,8 +25,6 @@ Game::~Game()
 {
 	delete this->scene;
 	delete this->view;
-	delete this->score;
-	delete this->snek;
 }
 
 int Game::run()
@@ -40,6 +38,7 @@ int Game::run()
 	this->view = new QGraphicsView(this->scene);
 #if ! defined(Q_OS_ANDROID) && ! defined(Q_OS_IOS)
 	this->view->resize(800, 600);
+    this->view->setFixedSize(800,600);
 	this->view->setMouseTracking(true);
 #endif
 	
@@ -73,14 +72,14 @@ int Game::run()
 	// Create the controls of the player
 	Control* leftControl = new Control();
 	leftControl->setRect(0,0,this->scene->width()/2,this->scene->height());
-	leftControl->setBrush(QBrush(qRgb(111, 157, 232),Qt::SolidPattern));
+    leftControl->setBrush(QBrush(Qt::white,Qt::SolidPattern));
 	this->scene->addItem(leftControl);
 	connect ( leftControl, SIGNAL(clicked()), snek, SLOT(setToLeft()) );
 	connect ( leftControl, SIGNAL(released()), snek, SLOT(setToLeftStop()) );
 	
 	Control* rightControl = new Control();
 	rightControl->setRect(this->scene->width()/2,0,this->scene->width()/2,this->scene->height());
-	rightControl->setBrush(QBrush(qRgb(216, 117, 106),Qt::SolidPattern));
+    rightControl->setBrush(QBrush(Qt::white,Qt::SolidPattern));
 	this->scene->addItem(rightControl);
 	connect ( rightControl, SIGNAL(clicked()), snek, SLOT(setToRight()) );
 	connect ( rightControl, SIGNAL(released()), snek, SLOT(setToRightStop()) );
