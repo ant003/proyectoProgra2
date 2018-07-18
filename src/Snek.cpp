@@ -3,6 +3,7 @@
 #include <QApplication>
 #include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>
+#include <QKeyEvent>
 #include <QPropertyAnimation>
 #include <QTimer>
 #include <QSoundEffect>
@@ -99,4 +100,22 @@ void Snek::detectCollisions()
 			this->score->increase();
 		}
 	}
+}
+
+void Snek::keyPressEvent(QKeyEvent *event)
+{
+    static_cast<void>(event);
+    if(event->key() == Qt::Key_Left)
+        this->setToLeft();
+    else if(event->key() == Qt::Key_Right)
+        this->setToRight();
+}
+
+void Snek::keyReleaseEvent(QKeyEvent *event)
+{
+    static_cast<void>(event);
+    if(event->key() == Qt::Key_Left)
+        this->setToLeftStop();
+    else if(event->key() == Qt::Key_Right)
+        this->setToRightStop();
 }

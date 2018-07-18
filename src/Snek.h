@@ -6,6 +6,7 @@ class QPropertyAnimation;
 class QSoundEffect;
 class QMouseEvent;
 class Score;
+class QKeyEvent;
 class Snek : public AnimatedObject
 {
 public:
@@ -39,6 +40,11 @@ public:
 	void moveLeft();
 	/// Move to right
 	void moveRight();
+
+protected:
+    virtual void keyPressEvent(QKeyEvent *event) override;
+
+    virtual void keyReleaseEvent(QKeyEvent *event) override;
 	
 protected slots:
 	/**
