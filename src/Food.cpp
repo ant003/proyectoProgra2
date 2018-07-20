@@ -58,3 +58,5 @@ void Food::setInitialPos()
 
 bool Food::getStatus() const { return touched; }
 
+void Food::setStatus(bool status){ this->touched = status; }
+

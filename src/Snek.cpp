@@ -100,7 +100,8 @@ void Snek::detectCollisions()
 			// Play the collision sound
 			//			this->collisionSound->play();
 			if( foodCollided->getStatus() == false)
-			this->score->increase();
+			this->score->increase(),
+			foodCollided->setStatus(true);
 		}
 	}
 }

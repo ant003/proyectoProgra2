@@ -44,6 +44,8 @@ public:
 	
 	bool getStatus() const;
 	
+	void setStatus(bool status);
+	
 public slots:
 	/**
 	 * @brief move food move the food down
