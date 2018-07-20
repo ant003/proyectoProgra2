@@ -17,7 +17,8 @@ Snek::Snek(Score* score)
 	// Set graphic image
 	setElementId( QString("snek"));
 	setElementId("snek");
-	//	setFlags(QGraphicsItem::ItemIsSelectable|QGraphicsItem::ItemIsMovable);
+	setFlag(QGraphicsItem::ItemIsFocusable);
+	setFocus();
 	
 	// Pre-load the collision sound SONIDO DE LA SNEK COMIENDO
 	//	collisionSound = new QSoundEffect(qApp);
@@ -89,33 +90,36 @@ void Snek::setToLeftStop()
 void Snek::detectCollisions()
 {
 	// Traverse all graphic items that are colliding with this
+	Food* foodCollided;
 	const QList<QGraphicsItem*>& items = collidingItems();
 	for ( QGraphicsItem* item : items )
 	{
 		// If a graphic item is an obstacle remove it from scene
-		if ( dynamic_cast<Food*>(item) )
+		if ( (foodCollided = dynamic_cast<Food*>(item)) )
 		{
 			// Play the collision sound
 			//			this->collisionSound->play();
+			if( foodCollided->getStatus() == false)
 			this->score->increase();
 		}
 	}
 }
-
+#include <iostream>
 void Snek::keyPressEvent(QKeyEvent *event)
 {
-    static_cast<void>(event);
-    if(event->key() == Qt::Key_Left)
-        this->setToLeft();
-    else if(event->key() == Qt::Key_Right)
-        this->setToRight();
+	static_cast<void>(event);
+	std::cout << event->key();
+	if(event->key() == Qt::Key_Left)
+		this->setToLeft();
+	else if(event->key() == Qt::Key_Right)
+		this->setToRight();
 }
 
 void Snek::keyReleaseEvent(QKeyEvent *event)
 {
-    static_cast<void>(event);
-    if(event->key() == Qt::Key_Left)
-        this->setToLeftStop();
-    else if(event->key() == Qt::Key_Right)
-        this->setToRightStop();
+	static_cast<void>(event);
+	if(event->key() == Qt::Key_Left)
+		this->setToLeftStop();
+	else if(event->key() == Qt::Key_Right)
+		this->setToRightStop();
 }

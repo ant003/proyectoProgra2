@@ -23,6 +23,7 @@ protected:
 	  * @details
 	  */
 	QPropertyAnimation* moveAnimation = nullptr;
+	bool touched;
 	
 public:
 	/**
@@ -40,6 +41,9 @@ public:
 	 * @details it chose a random initial position for the X axis within the screen, the y axis keeps always on 0
 	 */
 	void setInitialPos();
+	
+	bool getStatus() const;
+	
 public slots:
 	/**
 	 * @brief move food move the food down

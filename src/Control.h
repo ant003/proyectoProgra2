@@ -8,6 +8,8 @@ class Control : public QObject, public QGraphicsRectItem
 public:
 	Control();
 	
+	void setControles();
+	
 protected:
 	/**
 	*@brief Action meant to be only when this item is clicked by the player

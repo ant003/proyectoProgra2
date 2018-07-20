@@ -2,10 +2,14 @@
 
 Control::Control()
 {
+}
+
+void Control::setControles()
+{
 	
 }
 
-void  Control::mousePressEvent(QGraphicsSceneMouseEvent *event)
+void Control::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
 	event = event;
     emit clicked();

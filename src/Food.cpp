@@ -14,7 +14,7 @@ Food::Food()
 	// The name of the svg element
 	setElementId( QString("food"));
 	setElementId("food");
-	
+	touched = false;
 	//Connect
 	QTimer* timer = new QTimer(this);
 	connect(timer,SIGNAL(timeout()),this,SLOT(move()));
@@ -33,7 +33,7 @@ void Food::move()
 
 		if ( dynamic_cast<Snek*>(item) )
 		{
-			
+			this->touched = true;
 			this->deleteLater();
 			return;
 		}
@@ -55,4 +55,6 @@ void Food::setInitialPos()
 	
 	setPos( QPointF(x, y) );
 }
+
+bool Food::getStatus() const { return touched; }
 

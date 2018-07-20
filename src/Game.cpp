@@ -33,7 +33,6 @@ int Game::run()
 	qsrand(QTime::currentTime().msec());
 	// An invisible object that manages all the items
 	this->scene = new QGraphicsScene();
-	
 	// A visible rectangle of the scene
 	this->view = new QGraphicsView(this->scene);
 #if ! defined(Q_OS_ANDROID) && ! defined(Q_OS_IOS)
@@ -68,11 +67,10 @@ int Game::run()
 	scene->addItem(snek);
 	snek->setInitialPos();
 	snek->setZValue(qreal(200));
-	
 	// Create the controls of the player
 	Control* leftControl = new Control();
 	leftControl->setRect(0,0,this->scene->width()/2,this->scene->height());
-    leftControl->setBrush(QBrush(Qt::white,Qt::SolidPattern));
+	leftControl->setBrush(QBrush(Qt::white,Qt::SolidPattern));
 	this->scene->addItem(leftControl);
 	connect ( leftControl, SIGNAL(clicked()), snek, SLOT(setToLeft()) );
 	connect ( leftControl, SIGNAL(released()), snek, SLOT(setToLeftStop()) );
