@@ -29,6 +29,7 @@ Game::~Game()
 
 int Game::run()
 {
+
 	// Init the random seed
 	qsrand(QTime::currentTime().msec());
 	// An invisible object that manages all the items
@@ -67,6 +68,9 @@ int Game::run()
 	scene->addItem(snek);
 	snek->setInitialPos();
 	snek->setZValue(qreal(200));
+
+
+
 	// Create the controls of the player
 	Control* leftControl = new Control();
 	leftControl->setRect(0,0,this->scene->width()/2,this->scene->height());
@@ -74,6 +78,8 @@ int Game::run()
 	this->scene->addItem(leftControl);
 	connect ( leftControl, SIGNAL(clicked()), snek, SLOT(setToLeft()) );
 	connect ( leftControl, SIGNAL(released()), snek, SLOT(setToLeftStop()) );
+    leftControl->setFlag(QGraphicsItem::ItemStopsFocusHandling);
+    //snek->setFocus();
 	
 	Control* rightControl = new Control();
 	rightControl->setRect(this->scene->width()/2,0,this->scene->width()/2,this->scene->height());
@@ -81,6 +87,7 @@ int Game::run()
 	this->scene->addItem(rightControl);
 	connect ( rightControl, SIGNAL(clicked()), snek, SLOT(setToRight()) );
 	connect ( rightControl, SIGNAL(released()), snek, SLOT(setToRightStop()) );
+    rightControl->setFlag(QGraphicsItem::ItemStopsFocusHandling);
 	
 	// Launch an food periodically
 	QTimer* timer = new QTimer(this);
