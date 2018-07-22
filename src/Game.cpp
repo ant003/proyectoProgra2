@@ -30,6 +30,8 @@ Game::~Game()
 int Game::run()
 {
 
+
+
 	// Init the random seed
 	qsrand(QTime::currentTime().msec());
 	// An invisible object that manages all the items
@@ -61,6 +63,9 @@ int Game::run()
 	
 	// Load the graphic resources
 	this->svgRenderer = new QSvgRenderer(QString("://assets.svg"), this);
+
+    //Sets the window tittle
+    this->view->setWindowTitle("Snek");
 	
 	// Create the snake and pass the score control to it
 	Snek* snek = new Snek(score);
