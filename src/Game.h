@@ -37,6 +37,9 @@ protected:
 	*@details Must be connected to the snek so it can control the score since the collision detection is inside the snek
 	*/
 	Score* score;
+	
+	void setSnek();
+	
 public:
 	/// Constructor
 	Game(int &argc, char **argv, int flags = ApplicationFlags);

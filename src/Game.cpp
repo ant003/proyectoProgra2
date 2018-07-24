@@ -29,9 +29,7 @@ Game::~Game()
 
 int Game::run()
 {
-
-
-
+	
 	// Init the random seed
 	qsrand(QTime::currentTime().msec());
 	// An invisible object that manages all the items
@@ -40,7 +38,7 @@ int Game::run()
 	this->view = new QGraphicsView(this->scene);
 #if ! defined(Q_OS_ANDROID) && ! defined(Q_OS_IOS)
 	this->view->resize(800, 600);
-    this->view->setFixedSize(800,600);
+	this->view->setFixedSize(800,600);
 	this->view->setMouseTracking(true);
 #endif
 	
@@ -63,36 +61,22 @@ int Game::run()
 	
 	// Load the graphic resources
 	this->svgRenderer = new QSvgRenderer(QString("://assets.svg"), this);
-
-    //Sets the window tittle
-    this->view->setWindowTitle("Snek");
+	
+	//Sets the window tittle
+	this->view->setWindowTitle("Snek");
 	
 	// Create the snake and pass the score control to it
-	Snek* snek = new Snek(score);
-	snek->setSharedRenderer(svgRenderer);
-	scene->addItem(snek);
-	snek->setInitialPos();
-	snek->setZValue(qreal(200));
-
-
-
-	// Create the controls of the player
-	Control* leftControl = new Control();
-	leftControl->setRect(0,0,this->scene->width()/2,this->scene->height());
-	leftControl->setBrush(QBrush(Qt::white,Qt::SolidPattern));
-	this->scene->addItem(leftControl);
-	connect ( leftControl, SIGNAL(clicked()), snek, SLOT(setToLeft()) );
-	connect ( leftControl, SIGNAL(released()), snek, SLOT(setToLeftStop()) );
-    leftControl->setFlag(QGraphicsItem::ItemStopsFocusHandling);
-    //snek->setFocus();
+	this->snek = new Snek(score);
+	this->snek->setSharedRenderer(svgRenderer);
+	setSnek();
 	
-	Control* rightControl = new Control();
-	rightControl->setRect(this->scene->width()/2,0,this->scene->width()/2,this->scene->height());
-    rightControl->setBrush(QBrush(Qt::white,Qt::SolidPattern));
-	this->scene->addItem(rightControl);
-	connect ( rightControl, SIGNAL(clicked()), snek, SLOT(setToRight()) );
-	connect ( rightControl, SIGNAL(released()), snek, SLOT(setToRightStop()) );
-    rightControl->setFlag(QGraphicsItem::ItemStopsFocusHandling);
+	// Set controls
+	MouseScreen control = MouseScreen();
+	control.setPads(this->scene);
+	connect ( control.rightPad, SIGNAL(clicked()), snek, SLOT(setToRight()) );
+	connect ( control.rightPad, SIGNAL(released()), snek, SLOT(setToRightStop()) );
+	connect ( control.leftPad, SIGNAL(clicked()), snek, SLOT(setToLeft()) );
+	connect ( control.leftPad, SIGNAL(released()), snek, SLOT(setToLeftStop()) );
 	
 	// Launch an food periodically
 	QTimer* timer = new QTimer(this);
@@ -110,5 +94,13 @@ void Game::launchFood()
 	food->setSharedRenderer(svgRenderer);
 	scene->addItem(food);
 	food->setInitialPos();
+}
+
+void Game::setSnek()
+{
+	scene->addItem(snek);
+	this->snek->setInitialPos();
+	this->snek->setZValue(qreal(200));
+	this->snek->setFocus();
 }
 

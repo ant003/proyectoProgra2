@@ -2,13 +2,12 @@
 #define CONTROL_H
 #include <QGraphicsRectItem>
 #include <QObject>
+#include <QGraphicsScene>
 class Control : public QObject, public QGraphicsRectItem
 {
 	Q_OBJECT
 public:
 	Control();
-	
-	void setControles();
 	
 protected:
 	/**
@@ -24,6 +23,20 @@ protected:
 signals:
 	void clicked();
 	void released();
+};
+
+class MouseScreen
+{
+public:
+	MouseScreen();
+	Control* leftPad;
+	Control* rightPad;
+	/**
+	 * @brief setPads Acomodates the left and the right pads to the scene in which they'll be displayed
+	 * @param scene
+	 */
+	void setPads(QGraphicsScene* scene);
+//	void connectSignals(const QObject* context, Func2 slotStartRight, Func2 slotStopRight,Func2 slotStartRight,Func2 slotStopRight);
 };
 
 #endif // CONTROL_H

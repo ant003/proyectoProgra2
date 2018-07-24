@@ -48,6 +48,7 @@ void Snek::setInitialPos()
 
 void Snek::detectMovement()
 {
+	// method called by the qTimer that calls a function to move in the direction of the boolean changed by the connection
 	if(movementLeft)
 		this->moveLeft();
 	if(movementRight)
@@ -56,6 +57,7 @@ void Snek::detectMovement()
 
 void Snek::moveLeft()
 {
+	// moves the graphic object 10 units to the left
 	qreal x = this->pos().x()-10;
 	if(0<=x)
 		setPos(x, this->pos().y() );
@@ -63,6 +65,7 @@ void Snek::moveLeft()
 
 void Snek::moveRight()
 {
+	// moves the graphic object 10 units to the right
 	qreal x = this->pos().x()+10;
 	if(x<= scene()->width() - this->boundingRect().width() )
 		setPos(x, this->pos().y() );
@@ -105,6 +108,7 @@ void Snek::detectCollisions()
 		}
 	}
 }
+
 #include <iostream>
 void Snek::keyPressEvent(QKeyEvent *event)
 {

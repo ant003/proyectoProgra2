@@ -1,2 +1,3 @@
 build*
 *.user*
+Error in " Util.asciify("build-proyectoProgra2-Desktop-Debug")": TypeError: Property 'asciify' of object Core::Internal::UtilsJsExtension(0xf540e0) is not a function/

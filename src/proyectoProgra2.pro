@@ -13,7 +13,8 @@ SOURCES += \
     AnimatedObject.cpp \
     Control.cpp \
     Food.cpp \
-    Score.cpp
+    Score.cpp \
+    FallingObject.cpp
 
 HEADERS += \
     Game.h \
@@ -21,7 +22,8 @@ HEADERS += \
     AnimatedObject.h \
     Control.h \
     Food.h \
-    Score.h
+    Score.h \
+    FallingObject.h
 
 RESOURCES += \
     ../assets/resources.qrc
