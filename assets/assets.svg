@@ -8,9 +8,9 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="635.24731"
-   height="630.64325"
-   viewBox="0 0 635.24731 630.64325"
+   width="430.39722"
+   height="231.16179"
+   viewBox="0 0 430.39721 231.16179"
    version="1.1"
    xml:space="preserve"
    style="clip-rule:evenodd;fill-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41420996"
@@ -36,9 +36,9 @@
    fit-margin-left="0"
    fit-margin-right="0"
    fit-margin-bottom="0"
-   inkscape:zoom="0.76112748"
-   inkscape:cx="645.37227"
-   inkscape:cy="203.52953"
+   inkscape:zoom="2.1527936"
+   inkscape:cx="214.70857"
+   inkscape:cy="82.821259"
    inkscape:window-x="0"
    inkscape:window-y="0"
    inkscape:window-maximized="1"
@@ -93,12 +93,20 @@
      width="3386.7036"
      height="3235.7329"
      x="857.08441"
-     y="35.135391" /></clipPath></defs>
+     y="35.135391" /></clipPath><clipPath
+   clipPathUnits="userSpaceOnUse"
+   id="clipPath839"><rect
+     style="fill:none;fill-opacity:1;stroke:none;stroke-width:5.74280357;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:22.97121452, 5.74280363;stroke-dashoffset:0;stroke-opacity:1"
+     id="rect841"
+     width="593.57245"
+     height="1045.5089"
+     x="873.61609"
+     y="38.601868" /></clipPath></defs>
 <g
    style="clip-rule:evenodd;fill-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41420996"
    id="snek"
-   transform="matrix(0.19094736,0,0,0.18527035,-132.44075,-6.8522841)"
-   clip-path="url(#clipPath853)"
+   transform="matrix(0.19094736,0,0,0.18527035,-166.81469,-7.1517815)"
+   clip-path="url(#clipPath839)"
    inkscape:label="#g843"><g
      transform="matrix(0.675882,0,0,0.675882,124.952,14)"
      id="IMG_0837">
@@ -112,7 +120,7 @@
     </g></g><g
    style="clip-rule:evenodd;fill-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41420996"
    id="food"
-   transform="matrix(-0.06244309,-5.9350135e-4,4.9615268e-4,-0.0522012,354.9033,165.02456)"
+   transform="matrix(-0.02175891,-2.3338006e-4,1.728893e-4,-0.02052686,167.42684,65.293)"
    clip-path="url(#clipPath876)"
    inkscape:label="#g872"><g
      transform="matrix(0.788627,0,0,0.788627,-77,-356)"
@@ -127,7 +135,7 @@
     </g></g><g
    style="clip-rule:evenodd;fill-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41420996"
    id="icono"
-   transform="matrix(0.07400758,0,0,0.07105716,322.97255,0.90071858)"
+   transform="matrix(0.07400758,0,0,0.07105716,118.12244,-1.2568297)"
    clip-path="url(#clipPath909)"
    inkscape:label="#g901"><g
      id="g882"
