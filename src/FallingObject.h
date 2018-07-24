@@ -4,8 +4,6 @@
 #include "AnimatedObject.h"
 
 class QPropertyAnimation;
-class QMouseEvent;
-
 
 class FallingObject : public AnimatedObject
 {
@@ -41,7 +39,9 @@ public:
 	
 	virtual void setSpeed( double speed );
 	
-	virtual int getValue() { return value; }
+	virtual int getValue() const;
+	
+	virtual void setValue(int value);
 
 public slots:
 	/**

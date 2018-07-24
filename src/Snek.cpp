@@ -93,18 +93,20 @@ void Snek::setToLeftStop()
 void Snek::detectCollisions()
 {
 	// Traverse all graphic items that are colliding with this
-	Food* foodCollided;
+	FallingObject* object;
 	const QList<QGraphicsItem*>& items = collidingItems();
 	for ( QGraphicsItem* item : items )
 	{
-		// If a graphic item is an obstacle remove it from scene
-		if ( (foodCollided = dynamic_cast<Food*>(item)) )
+		// If a graphic item is a graphic object react to it
+		if ( (object = dynamic_cast<FallingObject*>(item)) )
 		{
 			// Play the collision sound
-			//			this->collisionSound->play();
-			if( foodCollided->getStatus() == false)
-			this->score->increase(),
-			foodCollided->setStatus(true);
+			//this->collisionSound->play();
+			if( object->getStatus() == false)
+			{
+				object->reactTo();
+				this->score->increase(object->getValue());
+			}
 		}
 	}
 }

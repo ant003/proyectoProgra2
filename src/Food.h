@@ -1,10 +1,10 @@
 #ifndef FOOD_H
 #define FOOD_H
-#include "AnimatedObject.h"
+#include "FallingObject.h"
 
 class QPropertyAnimation;
 
-class Food : public AnimatedObject
+class Food : public FallingObject
 {
 	Q_OBJECT
 	Q_DISABLE_COPY(Food)
@@ -38,19 +38,9 @@ public:
 	 * @brief setInitialPos Set the initial position of this item
 	 * @details it chose a random initial position for the X axis within the screen, the y axis keeps always on 0
 	 */
-	void setInitialPos();
+	virtual void setInitialPos();
 	
-	bool getStatus() const;
-	
-	void setStatus(bool status);
-	
-public slots:
-	/**
-	 * @brief move food move the food down
-	 * @details stablish the movement of the food trough the screen, if hits a snek graphic item it gets remove from scene
-	 */
-	void move();
-	
+	virtual void reactTo();
 };
 
 #endif // FOOD_H
