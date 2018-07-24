@@ -43,8 +43,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.12374369"
-     inkscape:cx="3809.547"
-     inkscape:cy="1673.2317"
+     inkscape:cx="2209.4654"
+     inkscape:cy="1640.9068"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -65,7 +65,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -76,49 +76,48 @@
      transform="translate(366.20759,205.59464)">
     <g
        style="clip-rule:evenodd;fill-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41420996"
-       id="g830"
-       transform="matrix(0.26458333,0,0,0.26458333,-345.83467,-111.40297)">
+       id="food"
+       transform="matrix(0.26458333,0,0,0.26458333,-345.83467,-111.40297)"
+       inkscape:label="#g830">
       <g
          transform="matrix(0.788627,0,0,0.788627,-77,-356)"
          id="IMG_0841">
         <use
-   id="use815"
-   height="5100"
-   width="3300"
-   y="0"
-   x="0"
-   xlink:href="#_Image1" />
-
-    </g>
+           id="use815"
+           height="5100"
+           width="3300"
+           y="0"
+           x="0"
+           xlink:href="#_Image1" />
+      </g>
     </g>
     <g
        style="clip-rule:evenodd;fill-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41420996"
-       id="g853"
-       transform="matrix(0.26458333,0,0,0.26458333,86.986331,-79.955819)">
+       id="icono"
+       transform="matrix(0.26458333,0,0,0.26458333,86.986331,-79.955819)"
+       inkscape:label="#g853">
       <g
          id="g834"
          transform="matrix(4.07692,0,0,3.96301,550.269,59.852)">
         <ellipse
-   id="ellipse832"
-   style="fill:#e1efce"
-   ry="405.5"
-   rx="409.5"
-   cy="401.5"
-   cx="490.5" />
-
-    </g>
+           id="ellipse832"
+           style="fill:#e1efce"
+           ry="405.5"
+           rx="409.5"
+           cy="401.5"
+           cx="490.5" />
+      </g>
       <g
          transform="matrix(0.74549,0,0,0.74549,1319.94,-331)"
          id="IMG_0847">
         <use
-   id="use836"
-   height="5100"
-   width="3300"
-   y="0"
-   x="0"
-   xlink:href="#_Image1-3" />
-
-    </g>
+           id="use836"
+           height="5100"
+           width="3300"
+           y="0"
+           x="0"
+           xlink:href="#_Image1-3" />
+      </g>
     </g>
     <g
        style="clip-rule:evenodd;fill-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41420996"
@@ -129,14 +128,13 @@
          transform="matrix(0.675882,0,0,0.675882,124.952,14)"
          id="IMG_0837">
         <use
-   id="use855"
-   height="5100"
-   width="3300"
-   y="0"
-   x="0"
-   xlink:href="#_Image1-6" />
-
-    </g>
+           id="use855"
+           height="5100"
+           width="3300"
+           y="0"
+           x="0"
+           xlink:href="#_Image1-6" />
+      </g>
     </g>
   </g>
 </svg>
