@@ -1,5 +1,4 @@
 #include <QGraphicsScene>
-#include <QGraphicsSceneMouseEvent>
 #include <QApplication>
 #include <QTimer>
 #include <QList>

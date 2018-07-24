@@ -23,8 +23,8 @@ protected:
 	*/
 	QPropertyAnimation* moveAnimation = nullptr;
 	bool touched;
-	
 	double speed;
+	int value;
 	
 public:
 	FallingObject( const char* name );
@@ -33,13 +33,15 @@ public:
 	 * @brief setInitialPos Set the initial position of this item
 	 * @details it chose a random initial position for the X axis within the screen, the y axis keeps always on 0
 	 */
-	virtual void setInitialPos();
+	virtual void setInitialPos() = 0;
+	
+	virtual void reactTo() = 0;
 	
 	virtual bool getStatus() const;
 	
-	virtual void setStatus(bool status);
-	
 	virtual void setSpeed( double speed );
+	
+	virtual int getValue() { return value; }
 
 public slots:
 	/**

@@ -4,8 +4,6 @@
 
 class QPropertyAnimation;
 
-class QMouseEvent;
-
 class Food : public AnimatedObject
 {
 	Q_OBJECT
