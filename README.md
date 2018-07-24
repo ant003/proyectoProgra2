@@ -7,7 +7,7 @@ Snek
 
 Snek is a game inspired in oldfashioned snake-like videogames where the player controls a snake around a map picking up food that makes it grow in size, if the snake bites itself in its quest to pick up food, the game's over.
 
-The objective of those sanke games is to survive as long as posible through the map, picking up food to make the snake longer and has the amount of food eaten as lives. If the snake hits a obstacule that refers to a n-integer, it loses n-lives obtained, if there are not more lives to lose, the game stops and the player lost.
+The objective of those snake games is to survive as long as posible through the map, picking up food to make the snake longer and has the amount of food eaten as lives. If the snake hits a obstacule that refers to a n-integer, it loses n-lives obtained, if there are not more lives to lose, the game stops and the player lost.
 
 <p><center><img src="/assets/readme/old_snake.jpg" alt="oldfashioned snake" align="middle" style="width: 300px;"/></center></p>
 
