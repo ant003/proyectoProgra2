@@ -57,6 +57,7 @@ protected slots:
 	*@details food is spawned according to an internal timer in the game class
 	*/
 	void launchFood();
+    void updateSize();
 	
 };
 

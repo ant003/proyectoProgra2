@@ -62,6 +62,8 @@ int Game::run()
 	// Load the graphic resources
 	this->svgRenderer = new QSvgRenderer(QString("://assets.svg"), this);
 	
+
+
 	//Sets the window tittle
 	this->view->setWindowTitle("Snek");
 	
@@ -69,6 +71,8 @@ int Game::run()
 	this->snek = new Snek(score);
 	this->snek->setSharedRenderer(svgRenderer);
 	setSnek();
+
+
 	
 	// Set controls
 	MouseScreen control = MouseScreen();
@@ -82,10 +86,22 @@ int Game::run()
 	QTimer* timer = new QTimer(this);
 	connect(timer, &QTimer::timeout, this, &Game::launchFood);
 	timer->start(1500);
+
+    // Update snek size
+    QTimer* sizeUpdate = new QTimer(this);
+    connect(sizeUpdate, &QTimer::timeout, this, &Game::updateSize);
+    timer->start(1000);
 	
 	// Show the view and enter in application's event loop
 	this->view->show();
 	return exec();
+}
+
+void Game::updateSize()
+{
+    int sizeformat = 1;
+    sizeformat += this->snek->score->getScore()/10;
+    this->snek->setScale(qreal(sizeformat));
 }
 
 void Game::launchFood()
@@ -102,5 +118,6 @@ void Game::setSnek()
 	this->snek->setInitialPos();
 	this->snek->setZValue(qreal(200));
 	this->snek->setFocus();
+
 }
 
