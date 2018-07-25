@@ -21,7 +21,7 @@ FallingObject::FallingObject( const char* name )
 	//starts a timer so the object will move every time the timer sends a signal
 	QTimer* timer = new QTimer(this);
 	connect(timer,SIGNAL(timeout()),this,SLOT(move()));
-	timer->start(50);
+	timer->start(25);
 }
 
 FallingObject::~FallingObject()

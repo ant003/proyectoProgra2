@@ -7,7 +7,6 @@
 #include <QTime>
 #include <QTimer>
 #include <QColor>
-//#include <QString>
 #include <QSettings>
 
 #include "Snek.h"
@@ -85,12 +84,14 @@ int Game::run()
 	connect ( control.leftPad, SIGNAL(released()), snek, SLOT(setToLeftStop()) );
 	
 	// Launch an food periodically
-	QTimer* timer = new QTimer(this);
-	connect(timer, &QTimer::timeout, this, &Game::launchFood);
-	timer->start(1500);
+	QTimer* foodSpawn = new QTimer(this);
+	connect(foodSpawn, &QTimer::timeout, this, &Game::launchFood);
+	foodSpawn->start(1500);
 	
+	// Check if the game reached end condition or if the speed needs an update
 	QTimer* checkEnd = new QTimer(this);
 	connect(checkEnd, &QTimer::timeout, this, &Game::endGame);
+	connect( checkEnd, &QTimer::timeout, this, &Game::updateSpeed);
 	checkEnd->start(50);
 	
 	// Show the view and enter in application's event loop
@@ -139,6 +140,23 @@ void Game::endGame()
 		{
 			this->highScore = this->score->getScore();
 			storeHighScore();
+		}
+	}
+}
+
+void Game::updateSpeed()
+{
+	FallingObject* object;
+	int newSpeed = this->score->getLives() > 5 ? this->score->getLives()/1.5 : 1;
+	const QList<QGraphicsItem*>& items = this->scene->items();
+	for ( QGraphicsItem* item : items )
+	{
+		// ranas duran 2.5 s en caer y 1.5 en salir
+		// velocidad, si aumenta en 5 el alimento que tiene incremente un 0.2
+		// If a graphic item is a graphic object react to it
+		if ( (object = dynamic_cast<FallingObject*>(item)) )
+		{
+			object->setSpeed(newSpeed);//a determinar
 		}
 	}
 }

@@ -59,5 +59,4 @@ protected:
 	 */
 	void updateScore();
 };
-
 #endif // SCORE_H

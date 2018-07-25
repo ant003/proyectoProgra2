@@ -68,6 +68,8 @@ protected slots:
 	void launchFood();
 	
 	void endGame();
+	
+	void updateSpeed();
 };
 
 #endif // GAME_H
