@@ -33,17 +33,11 @@ void MouseScreen::setPads(QGraphicsScene* scene)
 	
 	// paints the left pad and positionates it within the scene
 	leftPad->setRect(0,0,scene->width()/2,scene->height());
-	leftPad->setBrush(QBrush(Qt::white,Qt::SolidPattern));
+	leftPad->setBrush(QBrush(qRgb(111, 157, 232),Qt::SolidPattern));
+	leftPad->setPen(Qt::NoPen);
 	
 	// paints the right pad and positionates it within the scene
 	rightPad->setRect(scene->width()/2,0,scene->width()/2,scene->height());
-	rightPad->setBrush(QBrush(Qt::white,Qt::SolidPattern));
+	rightPad->setBrush(QBrush(qRgb(111, 157, 232),Qt::SolidPattern));
+	rightPad->setPen(Qt::NoPen);
 }
-
-//void mouseScreen::connectSignals(const QObject* context, SLOT slotStartRight, SLOT slotStopRight,SLOT slotStartLeft,SLOT slotStopLeft)
-//{
-//	connect ( this->rightPad, SIGNAL(clicked()), context, slotStartRight );
-//	connect ( this->rightPad, SIGNAL(released()), context, slotStopRight );
-//	connect ( this->leftPad, SIGNAL(clicked()), context, slotStartLeft );
-//	connect ( this->leftPad, SIGNAL(released()), context, slotStopLeft );
-//}

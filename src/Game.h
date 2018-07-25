@@ -38,8 +38,17 @@ protected:
 	*/
 	Score* score;
 	
+	Score* highScoreMarker;
+	
+	int highScore;
+	
+	int speed;
+	
 	void setSnek();
 	
+	int loadHighScore();
+	
+	void storeHighScore();
 public:
 	/// Constructor
 	Game(int &argc, char **argv, int flags = ApplicationFlags);
@@ -57,8 +66,8 @@ protected slots:
 	*@details food is spawned according to an internal timer in the game class
 	*/
 	void launchFood();
-    void updateSize();
 	
+	void endGame();
 };
 
 #endif // GAME_H

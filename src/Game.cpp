@@ -7,6 +7,8 @@
 #include <QTime>
 #include <QTimer>
 #include <QColor>
+//#include <QString>
+#include <QSettings>
 
 #include "Snek.h"
 #include "Game.h"
@@ -15,11 +17,7 @@
 #include "Food.h"
 #include "Score.h"
 
-Game::Game(int &argc, char **argv, int flags)
-	: QApplication(argc, argv, flags)
-{
-	
-}
+Game::Game(int &argc, char **argv, int flags) : QApplication(argc, argv, flags) {}
 
 Game::~Game()
 {
@@ -43,7 +41,7 @@ int Game::run()
 #endif
 	
 	// Set a black color background or add an image as a background
-	this->view->setBackgroundBrush(QBrush(Qt::white, Qt::SolidPattern));
+	this->view->setBackgroundBrush(QBrush(Qt::blue, Qt::SolidPattern));
 	// The scene has infinite size, but we want it has the same size than the view
 	// This stops the weird behavior of the autoscroll feature of the view being smaller than the
 	// scene, because the scene auto-increases when objects are moved
@@ -53,17 +51,23 @@ int Game::run()
 	this->view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	this->view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	
+	this->highScore = loadHighScore();
+	
+	
 	// A label to show the player score
-	this->score = new Score(tr("Score"), 0, Qt::black);
+	this->score = new Score(tr("Lives"), 0, 0, Qt::black);
 	this->score->setPos(5, 0);
 	this->scene->addItem(this->score);
 	this->score->setZValue(qreal(200));
+	// A label to show the player the highest score achieved
+	this->highScoreMarker = new Score(tr("Highscore"), this->highScore ,0, Qt::black);
+	highScoreMarker->setPos(this->scene->width()-200,0);
+	this->scene->addItem(highScoreMarker);
+	highScoreMarker->setZValue(200);
 	
 	// Load the graphic resources
 	this->svgRenderer = new QSvgRenderer(QString("://assets.svg"), this);
 	
-
-
 	//Sets the window tittle
 	this->view->setWindowTitle("Snek");
 	
@@ -71,8 +75,6 @@ int Game::run()
 	this->snek = new Snek(score);
 	this->snek->setSharedRenderer(svgRenderer);
 	setSnek();
-
-
 	
 	// Set controls
 	MouseScreen control = MouseScreen();
@@ -86,22 +88,14 @@ int Game::run()
 	QTimer* timer = new QTimer(this);
 	connect(timer, &QTimer::timeout, this, &Game::launchFood);
 	timer->start(1500);
-
-    // Update snek size
-    QTimer* sizeUpdate = new QTimer(this);
-    connect(sizeUpdate, &QTimer::timeout, this, &Game::updateSize);
-    timer->start(1000);
+	
+	QTimer* checkEnd = new QTimer(this);
+	connect(checkEnd, &QTimer::timeout, this, &Game::endGame);
+	checkEnd->start(50);
 	
 	// Show the view and enter in application's event loop
 	this->view->show();
 	return exec();
-}
-
-void Game::updateSize()
-{
-    int sizeformat = 1;
-    sizeformat += this->snek->score->getScore()/10;
-    this->snek->setScale(qreal(sizeformat));
 }
 
 void Game::launchFood()
@@ -118,6 +112,33 @@ void Game::setSnek()
 	this->snek->setInitialPos();
 	this->snek->setZValue(qreal(200));
 	this->snek->setFocus();
-
 }
 
+void Game::storeHighScore()
+{
+	QSettings settings;
+	settings.beginGroup(QString("scores"));
+	settings.setValue(QString("key"), highScore);
+	settings.endGroup();
+}
+
+int Game::loadHighScore()
+{
+	QSettings settings;
+	settings.beginGroup(QString("scores"));
+	int value = settings.value(QString("key"), 0 ).toInt();
+	settings.endGroup();
+	return value;
+}
+
+void Game::endGame()
+{
+	if(this->score->getLives() == 0)
+	{
+		if( this->score->getScore() > this->highScore )
+		{
+			this->highScore = this->score->getScore();
+			storeHighScore();
+		}
+	}
+}

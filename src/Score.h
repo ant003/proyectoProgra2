@@ -18,43 +18,45 @@ protected:
 	/// The amount scored
 	int score;
 	
+	int lives;
+	
 public:
-    /**
-     * @brief Score a constructor for a new score
-     * @param legend the name of the new score, like a label
-     * @param initialScore the number to inicialize the new score
-     * @param color the color of the new score label
-     * @param parent the inherit parent
-     */
-	Score(const QString& legend, int initialScore, QColor color, QGraphicsItem *parent = nullptr);
-
-    /**
-      * @brief the default destructor
-      */
+	/**
+	 * @brief Score a constructor for a new score
+	 * @param legend the name of the new score, like a label
+	 * @param initialScore the number to inicialize the new score
+	 * @param color the color of the new score label
+	 * @param parent the inherit parent
+	 */
+	Score(const QString& legend, int initialScore,int lives, QColor color, QGraphicsItem *parent = nullptr);
+	
+	/**
+	  * @brief the default destructor
+	  */
 	~Score();
-    /**
-     * @brief getScore Returns a copy of the current score
-     * @return the current score
-     */
+	/**
+	 * @brief getScore Returns a copy of the current score
+	 * @return the current score
+	 */
 	inline int getScore() const { return score; }
-
-    /**
-     * @brief increase increase the score and updates the view
-     * @param amount the amount to increase the score
-     */
+	
+	inline int getLives() const { return lives; }
+	
+	/**
+	 * @brief increase increase the score and updates the view
+	 * @param amount the amount to increase the score
+	 */
 	void increase(int amount = 1);
-
-
-    /**
-     * @brief decrease Decreases the score and updates the view
-     * @param amount the amount to decrease the score
-     */
-	void decrease(int amount = 1);
+	
+	/**
+	 * @brief decrease Decreases the score and updates the view
+	 * @param amount the amount to decrease the score
+	 */
 	
 protected:
-    /**
-     * @brief updateScore Updates the interface to match the int attribute score
-     */
+	/**
+	 * @brief updateScore Updates the interface to match the int attribute score
+	 */
 	void updateScore();
 };
 

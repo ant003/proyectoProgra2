@@ -19,7 +19,6 @@ Snek::Snek(Score* score)
 	setElementId("snek");
 	setFlag(QGraphicsItem::ItemIsFocusable);
 	setFocus();
-
 	
 	// Pre-load the collision sound SONIDO DE LA SNEK COMIENDO
 	//	collisionSound = new QSoundEffect(qApp);

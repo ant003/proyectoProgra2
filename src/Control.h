@@ -35,8 +35,8 @@ public:
 	 * @brief setPads Acomodates the left and the right pads to the scene in which they'll be displayed
 	 * @param scene
 	 */
+	
 	void setPads(QGraphicsScene* scene);
-//	void connectSignals(const QObject* context, Func2 slotStartRight, Func2 slotStopRight,Func2 slotStartRight,Func2 slotStopRight);
 };
 
 #endif // CONTROL_H

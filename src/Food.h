@@ -21,7 +21,6 @@ protected:
 	  * @details
 	  */
 	QPropertyAnimation* moveAnimation = nullptr;
-	bool touched;
 	
 public:
 	/**

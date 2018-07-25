@@ -14,7 +14,8 @@ SOURCES += \
     Control.cpp \
     Food.cpp \
     Score.cpp \
-    FallingObject.cpp
+    FallingObject.cpp \
+    Gate.cpp
 
 HEADERS += \
     Game.h \
@@ -23,7 +24,8 @@ HEADERS += \
     Control.h \
     Food.h \
     Score.h \
-    FallingObject.h
+    FallingObject.h \
+    Gate.h
 
 RESOURCES += \
     ../assets/resources.qrc
