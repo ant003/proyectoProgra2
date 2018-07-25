@@ -1,10 +1,9 @@
-#include <QGraphicsScene>
 #include <QApplication>
 #include <QTimer>
 #include <QList>
 #include "Snek.h"
 #include "Game.h"
-
+#include <QGraphicsScene>
 #include "Food.h"
 
 

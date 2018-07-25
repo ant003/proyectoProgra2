@@ -3,7 +3,7 @@
 #include "FallingObject.h"
 #include <string>
 class QPropertyAnimation;
-
+class QGraphicsTextItem;
 class Gate : public FallingObject
 {
 	Q_OBJECT
@@ -41,7 +41,7 @@ public:
 	 * @brief setInitialPos Set the initial position of this item
 	 * @details it chose a random initial position for the X axis within the screen, the y axis keeps always on 0
 	 */
-	virtual void setInitialPos(qreal x, qreal y);
+	virtual void setInitialPos(int gateNumber);
 	
 	virtual void reactTo();
 	
@@ -52,8 +52,8 @@ public:
 class NumericGate : public Gate
 {
 private:
-	std::string id[7] = {"Numeric1","Numeric2","Numeric3","Numeric4","Numeric5","Numeric6","Numeric7"};
-	int value[7] = {1,2,3,4,5,6,7};
+	std::string id[3] = {"Numeric2","Numeric4","Numeric7"};
+	int value[3] = {2,4,7};
 	
 public:
 	NumericGate(int index) : Gate(id[index].c_str()){ setValue(value[index]); }
@@ -62,8 +62,8 @@ public:
 class CharacterGate : public Gate
 {
 private:
-	std::string id[5] = {"CharacterA","CharacterF","CharacterC","CharacterN","CharacterG"};
-	int value[5] = {1,6,3,14,7};
+	std::string id[3] = {"CharA","CharF","CharN"};
+	int value[3] = {1,7,16};
 	
 public:
 	CharacterGate(int index) : Gate(id[index].c_str()){ setValue(value[index]); }
@@ -72,8 +72,8 @@ public:
 class RomanGate : public Gate
 {
 private:
-	std::string id[4] = {"RomanVII","RomanIV","RomanXIX","RomanXI"};
-	int value[4] = {7,4,19,11};
+	std::string id[3] = {"RomanVII","RomanXIX","RomanXI"};
+	int value[3] = {7,19,11};
 	
 public:
 	RomanGate(int index) : Gate(id[index].c_str()){ setValue(value[index]); }

@@ -1,6 +1,5 @@
 #ifndef FALLINGOBJECT_H
 #define FALLINGOBJECT_H
-
 #include "AnimatedObject.h"
 
 class QPropertyAnimation;
