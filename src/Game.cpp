@@ -57,12 +57,13 @@ int Game::run()
 	
 	
 	// A label to show the player score
-	this->score = new Score(tr("Lives"), 0, 0, Qt::black);
+	this->score = new Score(tr("Lives"), 0, 0, Qt::white);
 	this->score->setPos(5, 0);
 	this->scene->addItem(this->score);
 	this->score->setZValue(qreal(200));
+	
 	// A label to show the player the highest score achieved
-	this->highScoreMarker = new Score(tr("Highscore"), 0 , this->highScore, Qt::black);
+	this->highScoreMarker = new Score(tr("Highscore"), 0 , this->highScore, Qt::white);
 	highScoreMarker->setPos(this->scene->width()-200,0);
 	this->scene->addItem(highScoreMarker);
 	highScoreMarker->setZValue(200);
@@ -89,12 +90,12 @@ int Game::run()
 	// Launch a food periodically
 	QTimer* foodSpawn = new QTimer(this);
 	connect(foodSpawn, &QTimer::timeout, this, &Game::launchFood);
-	foodSpawn->start(1500);
+	foodSpawn->start(1000);
 	
 	// Launch food periodically
-	//QTimer* obstacleSpawn = new QTimer(this);
-	//connect(obstacleSpawn,&QTimer::timeout, this, &Game::launchObstables);
-	//obstacleSpawn->start(5000);
+	QTimer* obstacleSpawn = new QTimer(this);
+	connect(obstacleSpawn,&QTimer::timeout, this, &Game::launchObstables);
+	obstacleSpawn->start(10000);
 	
 	// Check if the game reached end condition or if the speed needs an update
 	QTimer* checkEnd = new QTimer(this);
@@ -120,18 +121,23 @@ void Game::launchObstables()
 	Gate* obstacle1;
 	Gate* obstacle2;
 	Gate* obstacle3;
+	Gate* obstacle4;
 	obstacle1 = new Gate("Number2");
 	obstacle2 = new Gate("RomanVII");
 	obstacle3 = new Gate("CharA");
+	obstacle4 = new Gate("RomanXI");
 	obstacle1->setSharedRenderer(svgRenderer);
 	obstacle2->setSharedRenderer(svgRenderer);
 	obstacle3->setSharedRenderer(svgRenderer);
+	obstacle4->setSharedRenderer(svgRenderer);
 	scene->addItem(obstacle1);
 	scene->addItem(obstacle2);
 	scene->addItem(obstacle3);
+	scene->addItem(obstacle4);
 	obstacle1->setInitialPos(0);
 	obstacle2->setInitialPos(1);
 	obstacle3->setInitialPos(2);
+	obstacle4->setInitialPos(3);
 }
 
 void Game::setSnek()

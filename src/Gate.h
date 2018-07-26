@@ -51,34 +51,47 @@ public:
 	
 };
 
-class NumericGate : public Gate
-{
-private:
-	std::string id[3] = {"Number2","Number4","Number7"};
-	int value[3] = {2,4,7};
-	
-public:
-	NumericGate(int index) : Gate(id[index].c_str()){ setValue(value[index]); }
-};
 
-class CharacterGate : public Gate
+class GateManager
 {
-private:
-	std::string id[3] = {"CharA","CharF","CharN"};
-	int value[3] = {1,7,16};
-	
 public:
-	CharacterGate(int index) : Gate(id[index].c_str()){ setValue(value[index]); }
+	GateManager();
+	
+	void addToScene(QGraphicsScene* scene);
+	
+private:
+	Gate* gates[4] = {nullptr,nullptr,nullptr,nullptr};
+	
+	Gate* generateGate();
 };
+//class NumericGate : public Gate
+//{
+//private:
+//	std::string id[3] = {"Number2","Number4","Number7"};
+//	int value[3] = {2,4,7};
+	
+//public:
+//	NumericGate(int index) : Gate(id[index].c_str()){ setValue(value[index]); }
+//};
 
-class RomanGate : public Gate
-{
-private:
-	std::string id[3] = {"RomanVII","RomanXIX","RomanXI"};
-	int value[3] = {7,19,11};
+//class CharacterGate : public Gate
+//{
+//private:
+//	std::string id[3] = {"CharA","CharF","CharN"};
+//	int value[3] = {1,7,16};
 	
-public:
-	RomanGate(int index) : Gate(id[index].c_str()){ setValue(value[index]); }
-};
+//public:
+//	CharacterGate(int index) : Gate(id[index].c_str()){ setValue(value[index]); }
+//};
+
+//class RomanGate : public Gate
+//{
+//private:
+//	std::string id[3] = {"RomanVII","RomanXIX","RomanXI"};
+//	int value[3] = {7,19,11};
+	
+//public:
+//	RomanGate(int index) : Gate(id[index].c_str()){ setValue(value[index]); }
+//};
 
 #endif // GATE_H

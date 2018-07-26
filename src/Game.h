@@ -44,6 +44,8 @@ protected:
 	
 	int speed;
 	
+	int previousScore;
+	
 	void setSnek();
 	
 	void loadHighScore();
