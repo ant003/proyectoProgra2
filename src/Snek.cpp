@@ -58,7 +58,7 @@ void Snek::detectMovement()
 void Snek::moveLeft()
 {
 	// moves the graphic object 10 units to the left
-	qreal x = this->pos().x()-15;
+	qreal x = this->pos().x()-20;
 	if(0<=x)
 		setPos(x, this->pos().y() );
 }
@@ -66,7 +66,7 @@ void Snek::moveLeft()
 void Snek::moveRight()
 {
 	// moves the graphic object 10 units to the right
-	qreal x = this->pos().x()+15;
+	qreal x = this->pos().x()+20;
 	if(x<= scene()->width() - this->boundingRect().width() )
 		setPos(x, this->pos().y() );
 }

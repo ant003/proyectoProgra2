@@ -92,9 +92,10 @@ int Game::run()
 	foodSpawn->start(1500);
 	
 	// Launch food periodically
-	QTimer* obstacleSpawn = new QTimer(this);
-	connect(obstacleSpawn,&QTimer::timeout, this, &Game::launchObstables);
-	obstacleSpawn->start(5000);
+	//QTimer* obstacleSpawn = new QTimer(this);
+	//connect(obstacleSpawn,&QTimer::timeout, this, &Game::launchObstables);
+	//obstacleSpawn->start(5000);
+	
 	// Check if the game reached end condition or if the speed needs an update
 	QTimer* checkEnd = new QTimer(this);
 	connect(checkEnd, &QTimer::timeout, this, &Game::endGame);
@@ -175,7 +176,7 @@ void Game::endGame()
 void Game::updateSpeed()
 {
 	FallingObject* object;
-	int newSpeed = this->score->getLives() > 5 ? this->score->getLives()/1.5 : 1;
+	int newSpeed = this->score->getLives() > 5 ? this->score->getLives()/5 : 1;
 	const QList<QGraphicsItem*>& items = this->scene->items();
 	for ( QGraphicsItem* item : items )
 	{
