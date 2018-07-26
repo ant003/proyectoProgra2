@@ -3,6 +3,12 @@
 int main(int argc, char *argv[])
 {
 	// Represents the whole application
-	Game game(argc, argv);
-	return game.run();
+
+    int currenExitCode = 0;
+    do{
+        Game game(argc, argv);
+        currenExitCode = game.run();
+    }while(currenExitCode == Game::rebootCode);
+
+    return currenExitCode;
 }

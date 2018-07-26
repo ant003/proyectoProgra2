@@ -10,36 +10,57 @@ class Score;
 
 class Game : public QApplication
 {
+
 	Q_DISABLE_COPY(Game)
 protected:
-	/**
-	*@brief Manages graphic items. It is an invisible manager
-	*@details The scene is the owner of all the items in it and must be rendered by other object
-	*/
+
+    /// Manages graphic items. It is an invisible manager
+
 	QGraphicsScene* scene;
-	/**
-	*@brief  A visible widget that renders the scene
-	*@details The view renders the scene and will show a limited part of the scene
-	*/
+
+
+    ///  A visible widget that renders the scene
+
 	QGraphicsView* view;
-	/**
-	*@brief A resource that contains a set of sprites that will be used in game
-	*@details The svgRenderer will be used to assign each graphic item defined a representation
-	*/
+
+
+    /// A resource that contains a set of sprites that will be used in game
+
 	QSvgRenderer* svgRenderer = nullptr;
-	/**
-	*@brief A graphic item that will be controlled by the player
-	*@details this graphic item will be controlled by two in-screen pads and has the capabilities to detect events about itself like collisions or updates in the movement controls
-	*/
+
+
+    ///A graphic item that will be controlled by the player
+
 	Snek* snek;
-	/**
-	*@brief A Qlabel item that will display the score achieved by the player
-	*@details Must be connected to the snek so it can control the score since the collision detection is inside the snek
-	*/
+
+
+    /// A Qlabel item that will display the score achieved by the player
+
 	Score* score;
 	
+
+     /// A Qlabel item that will display the highscore achieved by the player
+
 	Score* highScoreMarker;
-	
+
+
+     ///foodSpawn a pointer to the food timer
+
+    QTimer* foodSpawn;
+
+
+     /// obstacleSpawn a pointer to the obstacleSpawn
+
+    QTimer* obstacleSpawn;
+
+
+     /// exitButtonCreated lets to probe if the exit button was already created
+
+    bool exitButtonCreated;
+
+    /**
+     * @brief highScore
+     */
 	int highScore;
 	
 	int speed;
@@ -51,7 +72,10 @@ protected:
 	void loadHighScore();
 	
 	void storeHighScore();
+
+
 public:
+    static int const rebootCode = 666;
 	/// Constructor
 	Game(int &argc, char **argv, int flags = ApplicationFlags);
 	/// Destructor
@@ -63,16 +87,20 @@ public:
 	//      void playBackgroundMusic(const QString& audioFilename);
 	
 protected slots:
-	/**
-	*@brief slot method that is called each time a new food item must be spawned
-	*@details food is spawned according to an internal timer in the game class
-	*/
+
+    /// slot method that is called each time a new food item must be spawned
 	void launchFood();
 	
-	void endGame();
+    /// slot method that is called to check if the player lose all health
+    void endGame();
 	
-	void updateSpeed();
+    /// slot method that is called each 2 seconds to update speed
+    void updateSpeed();
+
+    /// slot method that is called each 2 seconds to launch an obstacle
 	void launchObstables();
+
+    void reboot();
 };
 
 #endif // GAME_H

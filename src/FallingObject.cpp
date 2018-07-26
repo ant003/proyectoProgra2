@@ -32,7 +32,7 @@ void FallingObject::move()
 {
 	// Changes the y position of the object so it falls down at certain speed
 	setPos(x(),y()+(5 + speed ));
-	if(pos().y() > scene()->height())
+    if( scene() && pos().y() > scene()->height())
 	{
 		// if the object has reached the end of the view it gets deleted
         //scene()->removeItem(this);

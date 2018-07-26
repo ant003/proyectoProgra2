@@ -6,20 +6,17 @@ class QPropertyAnimation;
 class QGraphicsTextItem;
 class Gate : public FallingObject
 {
+
+    friend class GateManager;
+
 	Q_OBJECT
 	Q_DISABLE_COPY(Gate)
 	
-	/**
-	  * @brief Create a position property to animate the movement of this item
-	  * @details provides inter-object communication via signals and slots.
-	  */
+    /// Provides inter-object communication via signals and slots.
 	Q_PROPERTY(QPointF pos READ pos WRITE setPos)
 	
 protected:
-	/**
-	  * @brief Animates the gates moving around the screen
-	  * @details
-	  */
+    /// Animates the gates moving around the screen
 	QPropertyAnimation* moveAnimation = nullptr;
 	
 	Gate* next = nullptr;
@@ -27,27 +24,20 @@ protected:
 	Gate* before = nullptr;
 	
 public:
-	/**
-	 * @brief Food default constructor
-	 */
+    /// Default constructor that creates a gate with a specific id
 	Gate(const char* id);
 	
-	/**
-	  * @brief Food default destructor
-	  */
+    /// Default destructor
 	virtual ~Gate();
 	
-	/**
-	 * @brief setInitialPos Set the initial position of this item
-	 * @details it chose a random initial position for the X axis within the screen, the y axis keeps always on 0
-	 */
+    /// Sets the initial position of the gate from 4 possible positions
 	virtual void setInitialPos(int gateNumber);
 	
+    /// Default set initial position
 	virtual void setInitialPos();
 	
+    /// method that specifies how the gate should react if it collides with another item
 	virtual void reactTo();
-	
-	virtual void setAdjacent(Gate* before, Gate* next );
 	
 };
 

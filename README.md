@@ -54,3 +54,5 @@ C++ (only language used)
 #### Antonio Álvarez Chavarría </pre>
 
 #### Luis Diego Naranjo Monge
+
+#### Sade Nudjent Mejía ( assets )
