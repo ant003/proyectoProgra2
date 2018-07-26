@@ -35,8 +35,10 @@ void FallingObject::move()
 	if(pos().y() > scene()->height())
 	{
 		// if the object has reached the end of the view it gets deleted
-		scene()->removeItem(this);
-		delete this;
+        //scene()->removeItem(this);
+        //this->deleteLater();
+        this->destroy(true,true);
+        //delete this;
 	}
 }
 

@@ -75,8 +75,9 @@ void GateManager::addToScene(QGraphicsScene *scene)
 Gate* GateManager::generateGate()
 { // 7 XI F N 2 XIX 4 VII A
 	Gate* product = nullptr;
-	int value = static_cast<int>((qrand() % 9));
-	std::cout << value << std::endl;
+    int value = static_cast<int>((qrand() % 9));
+    //std::cout << value << std::endl;
+    //int value = 8;
 	switch(value)
 	{
 		case(0):

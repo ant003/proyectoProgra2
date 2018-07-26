@@ -23,5 +23,6 @@ void Food::reactTo()
 {
 	// if it collides with the snek this object will change its state and will be hided
 	this->touched = true;
-	this->deleteLater(); // posible crasheo
+    this->destroy(true,true);
+    //this->deleteLater(); // posible crasheo
 }
