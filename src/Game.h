@@ -15,62 +15,51 @@ class Game : public QApplication
 protected:
 
     /// Manages graphic items. It is an invisible manager
-
 	QGraphicsScene* scene;
 
 
     ///  A visible widget that renders the scene
-
 	QGraphicsView* view;
 
 
     /// A resource that contains a set of sprites that will be used in game
-
 	QSvgRenderer* svgRenderer = nullptr;
 
 
     ///A graphic item that will be controlled by the player
-
 	Snek* snek;
 
 
     /// A Qlabel item that will display the score achieved by the player
-
 	Score* score;
 	
 
      /// A Qlabel item that will display the highscore achieved by the player
-
 	Score* highScoreMarker;
 
 
      ///foodSpawn a pointer to the food timer
-
     QTimer* foodSpawn;
 
 
      /// obstacleSpawn a pointer to the obstacleSpawn
-
     QTimer* obstacleSpawn;
 
 
-     /// exitButtonCreated lets to probe if the exit button was already created
-
+     /// exitButtonCreated lets to check if the exit button was already created
     bool exitButtonCreated;
 
-    /**
-     * @brief highScore
-     */
 	int highScore;
 	
-	int speed;
-	
-	int previousScore;
-	
+    int speed;
+
+    /// instantiates and positionates the snek
 	void setSnek();
 	
+    /// searches the highSCore within in the Qsettings
 	void loadHighScore();
 	
+    /// stores the highScore in the Qsettings
 	void storeHighScore();
 
 
@@ -100,6 +89,7 @@ protected slots:
     /// slot method that is called each 2 seconds to launch an obstacle
 	void launchObstables();
 
+    /// slot method called when a reboot is requested
     void reboot();
 };
 

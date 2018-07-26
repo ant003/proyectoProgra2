@@ -47,13 +47,16 @@ class GateManager
 public:
 	GateManager();
 	
+    /// add all its items to the scene
 	void addToScene(QGraphicsScene* scene);
 	
+    /// sets up all the svgRenderer
 	void setUpSharedRenderer(QSvgRenderer* svgRenderer);
 	
 private:
 	Gate* gates[4] = {nullptr,nullptr,nullptr,nullptr};
 	
+    /// generates a random gate
 	Gate* generateGate();
 };
 //class NumericGate : public Gate

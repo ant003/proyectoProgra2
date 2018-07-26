@@ -9,36 +9,26 @@ class Food : public FallingObject
 	Q_OBJECT
 	Q_DISABLE_COPY(Food)
 	
-	/**
-	  * @brief Create a position property to animate the movement of this item
-	  * @details provides inter-object communication via signals and slots.
-	  */
+
+    /// provides inter-object communication via signals and slots.
 	Q_PROPERTY(QPointF pos READ pos WRITE setPos)
 	
 protected:
-	/**
-	  * @brief Animates the food moving around the screen
-	  * @details
-	  */
+
+    /// Animates the food moving around the screen
 	QPropertyAnimation* moveAnimation = nullptr;
 	
 public:
-	/**
-	 * @brief Food default constructor
-	 */
+    /// Default consctructor
 	Food();
 	
-	/**
-	  * @brief Food default destructor
-	  */
+    /// Default destructor
 	~Food();
 	
-	/**
-	 * @brief setInitialPos Set the initial position of this item
-	 * @details it chose a random initial position for the X axis within the screen, the y axis keeps always on 0
-	 */
+    /// Selects a random position as its initial point at the highest y at view
 	virtual void setInitialPos();
 	
+    /// method that specifies how the gate should react if it collides with another item
 	virtual void reactTo();
 };
 
