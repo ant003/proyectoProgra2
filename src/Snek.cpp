@@ -105,7 +105,7 @@ void Snek::detectCollisions()
 			if( object->getStatus() == false)
 			{
 				object->reactTo();
-				this->score->increase(object->getValue());
+				this->score->modify(object->getValue());
 			}
 		}
 	}

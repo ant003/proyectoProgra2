@@ -17,6 +17,8 @@
 #include "Score.h"
 #include "Gate.h"
 
+#include <QDebug>
+
 Game::Game(int &argc, char **argv, int flags) : QApplication(argc, argv, flags) {}
 
 Game::~Game()
@@ -51,7 +53,7 @@ int Game::run()
 	this->view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	this->view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	
-	this->highScore = loadHighScore();
+	loadHighScore();
 	
 	
 	// A label to show the player score
@@ -60,7 +62,7 @@ int Game::run()
 	this->scene->addItem(this->score);
 	this->score->setZValue(qreal(200));
 	// A label to show the player the highest score achieved
-	this->highScoreMarker = new Score(tr("Highscore"), this->highScore ,0, Qt::black);
+	this->highScoreMarker = new Score(tr("Highscore"), 0 , this->highScore, Qt::black);
 	highScoreMarker->setPos(this->scene->width()-200,0);
 	this->scene->addItem(highScoreMarker);
 	highScoreMarker->setZValue(200);
@@ -92,7 +94,7 @@ int Game::run()
 	// Launch food periodically
 	QTimer* obstacleSpawn = new QTimer(this);
 	connect(obstacleSpawn,&QTimer::timeout, this, &Game::launchObstables);
-	obstacleSpawn->start(2000);
+	obstacleSpawn->start(5000);
 	// Check if the game reached end condition or if the speed needs an update
 	QTimer* checkEnd = new QTimer(this);
 	connect(checkEnd, &QTimer::timeout, this, &Game::endGame);
@@ -114,10 +116,21 @@ void Game::launchFood()
 
 void Game::launchObstables()
 {
-	Gate* obstacle = new NumericGate(0);
-	obstacle->setSharedRenderer(svgRenderer);
-	scene->addItem(obstacle);
-	obstacle->setInitialPos(0);
+	Gate* obstacle1;
+	Gate* obstacle2;
+	Gate* obstacle3;
+	obstacle1 = new Gate("Number2");
+	obstacle2 = new Gate("RomanVII");
+	obstacle3 = new Gate("CharA");
+	obstacle1->setSharedRenderer(svgRenderer);
+	obstacle2->setSharedRenderer(svgRenderer);
+	obstacle3->setSharedRenderer(svgRenderer);
+	scene->addItem(obstacle1);
+	scene->addItem(obstacle2);
+	scene->addItem(obstacle3);
+	obstacle1->setInitialPos(0);
+	obstacle2->setInitialPos(1);
+	obstacle3->setInitialPos(2);
 }
 
 void Game::setSnek()
@@ -127,36 +140,38 @@ void Game::setSnek()
 	this->snek->setZValue(qreal(200));
 	this->snek->setFocus();
 }
-
+#include <iostream>
 void Game::storeHighScore()
 {
-	QSettings settings;
-	settings.beginGroup(QString("scores"));
-	settings.setValue(QString("key"), highScore);
+	QSettings settings("MyGame","MyScore");
+	settings.beginGroup("Scores");
+	settings.setValue("HighScore",this->highScore);
 	settings.endGroup();
+	std::cout << "stored:" << this->highScore << std::endl;
 }
 
-int Game::loadHighScore()
+void Game::loadHighScore()
 {
-	QSettings settings;
-	settings.beginGroup(QString("scores"));
-	int value = settings.value(QString("key"), 0 ).toInt();
+	QSettings settings("MyGame","MyScore");
+	settings.beginGroup("Scores");
+	int value = settings.value("HighScore",0).toInt();
+	this->highScore = value;
 	settings.endGroup();
-	return value;
+	std::cout << "loaded:" << this->highScore << std::endl ;
 }
 
 void Game::endGame()
 {
-	if(this->score->getLives() == 0)
+	if(this->score->getLives() < 0)
 	{
 		if( this->score->getScore() > this->highScore )
 		{
 			this->highScore = this->score->getScore();
 			storeHighScore();
 		}
+	this->exit();
 	}
 }
-
 void Game::updateSpeed()
 {
 	FallingObject* object;

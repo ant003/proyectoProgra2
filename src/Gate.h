@@ -54,7 +54,7 @@ public:
 class NumericGate : public Gate
 {
 private:
-	std::string id[3] = {"Numeric2","Numeric4","Numeric7"};
+	std::string id[3] = {"Number2","Number4","Number7"};
 	int value[3] = {2,4,7};
 	
 public:

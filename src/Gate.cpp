@@ -3,6 +3,7 @@
 #include <QGraphicsTextItem>
 Gate::Gate(const char* id) : FallingObject(id)
 {
+	setValue(-5);
 }
 
 Gate::~Gate() {}

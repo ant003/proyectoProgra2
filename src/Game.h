@@ -46,7 +46,7 @@ protected:
 	
 	void setSnek();
 	
-	int loadHighScore();
+	void loadHighScore();
 	
 	void storeHighScore();
 public:

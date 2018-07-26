@@ -46,7 +46,7 @@ public:
 	 * @brief increase increase the score and updates the view
 	 * @param amount the amount to increase the score
 	 */
-	void increase(int amount = 1);
+	void modify(int amount = 1);
 	
 	/**
 	 * @brief decrease Decreases the score and updates the view

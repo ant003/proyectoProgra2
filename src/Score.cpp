@@ -18,14 +18,16 @@ Score::~Score()
 {
 }
 
-void Score::increase(int amount)
+void Score::modify(int amount)
 {
 	// changes the score and calls for the update
-	if( amount > 0 )
-		score += amount,
+	if( 0 < amount)
+	{
+		score += amount;
 		lives += amount;
+	}
 	else
-		lives = lives-amount ? lives-amount : 0;
+		lives += amount;
 	updateScore();
 }
 

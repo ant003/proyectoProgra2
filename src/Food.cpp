@@ -26,3 +26,21 @@ void Food::reactTo()
 	this->deleteLater(); // posible crasheo
 }
 
+Ex::Ex() : FallingObject("Number2"){ setValue(-10); }
+
+Ex::~Ex(){}
+
+void Ex::setInitialPos()
+{
+	// the object will start at a random position
+	qreal x = qrand() % int(scene()->width() - this->boundingRect().width());
+	qreal y = 0;
+	setPos( QPointF(x, y) );
+}
+
+void Ex::reactTo()
+{
+	// if it collides with the snek this object will change its state and will be hided
+	this->touched = true;
+	this->deleteLater(); // posible crasheo
+}
