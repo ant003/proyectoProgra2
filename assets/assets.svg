@@ -10,9 +10,9 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="784.09369mm"
-   height="376.91785mm"
-   viewBox="0 0 784.09369 376.91785"
+   width="859.6889mm"
+   height="402.99823mm"
+   viewBox="0 0 859.6889 402.99823"
    version="1.1"
    id="svg8"
    inkscape:version="0.92.3 (unknown)"
@@ -27,8 +27,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.35"
-     inkscape:cx="1577.4338"
-     inkscape:cy="748"
+     inkscape:cx="1557.4338"
+     inkscape:cy="765.14294"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -58,7 +58,7 @@
      inkscape:label="Capa 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(601.51133,117.86666)">
+     transform="translate(677.10657,139.41132)">
     <image
        y="0.81785363"
        x="-0.98273939"
@@ -94,7 +94,7 @@
          id="flowPara17"
          style="font-size:96px">a</flowPara></flowRoot>    <g
        id="CharA"
-       transform="translate(-114.98036,235.10119)"
+       transform="translate(-148.24226,235.85714)"
        inkscape:label="#g4800">
       <rect
          style="fill:#00ffff;fill-opacity:0.94117647;stroke-width:0.26458332"
@@ -124,7 +124,7 @@
     </g>
     <g
        id="CharF"
-       transform="translate(105.0018,-59.720235)"
+       transform="translate(80.055371,-32.505949)"
        inkscape:label="#g4794">
       <path
          inkscape:connector-curvature="0"
@@ -154,10 +154,10 @@
          id="tspan4716"
          x="-477.23273"
          y="-162.47789"
-         style="stroke-width:0.26458332"></tspan></text>
+         style="stroke-width:0.26458332" /></text>
     <g
        id="CharN"
-       transform="translate(346.15058,-77.863089)"
+       transform="translate(319.16307,-97.517858)"
        inkscape:label="#g4805">
       <rect
          style="fill:#37c8ab;fill-opacity:0.94117647;stroke-width:0.26458332"
@@ -182,7 +182,7 @@
     <g
        id="Number2"
        inkscape:label="#g4965"
-       transform="translate(-816.35299,-69.245235)">
+       transform="translate(-888.92442,-72.269045)">
       <rect
          style="fill:#37c871;fill-opacity:0.94117647;stroke-width:0.26458332"
          y="69.307144"
@@ -206,7 +206,7 @@
     <g
        id="Number7"
        inkscape:label="#g4970"
-       transform="translate(-808.03751,-131.23333)">
+       transform="translate(-883.63275,-105.53095)">
       <rect
          style="fill:#7f2aff;fill-opacity:0.94117647;stroke-width:0.26458332"
          y="249.22382"
@@ -230,7 +230,7 @@
     <g
        id="RomanXIX"
        inkscape:label="#g4945"
-       transform="translate(-90.789894,-127.75596)">
+       transform="translate(-145.21847,-100.54167)">
       <rect
          style="fill:#d35f8d;fill-opacity:0.94117647;stroke-width:0.26458332"
          y="246.20001"
@@ -254,7 +254,7 @@
     <g
        id="RomanVII"
        inkscape:label="#g4940"
-       transform="translate(119.21367,8.0131033)">
+       transform="translate(67.808908,7.2571509)">
       <rect
          style="fill:#37c8ab;fill-opacity:0.94117647;stroke-width:0.26458332"
          y="-7.0440483"
@@ -284,7 +284,7 @@
     <g
        id="RomanXI"
        inkscape:label="#g4934"
-       transform="translate(92.150576,58.208337)">
+       transform="translate(42.484504,39.30952)">
       <rect
          style="fill:#37c8ab;fill-opacity:0.94117647;stroke-width:0.26458332"
          y="-175.62143"
@@ -314,7 +314,7 @@
     <g
        id="Number4"
        inkscape:label="#g4960"
-       transform="translate(-806.52561,-14.816661)">
+       transform="translate(-880.45793,-36.361312)">
       <rect
          style="fill:#37c8ab;fill-opacity:0.94117647;stroke-width:0.26458332"
          y="-103.05"

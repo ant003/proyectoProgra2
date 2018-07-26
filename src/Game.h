@@ -70,6 +70,7 @@ protected slots:
 	void endGame();
 	
 	void updateSpeed();
+	void launchObstables();
 };
 
 #endif // GAME_H

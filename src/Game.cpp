@@ -15,6 +15,7 @@
 #include "Control.h"
 #include "Food.h"
 #include "Score.h"
+#include "Gate.h"
 
 Game::Game(int &argc, char **argv, int flags) : QApplication(argc, argv, flags) {}
 
@@ -83,11 +84,15 @@ int Game::run()
 	connect ( control.leftPad, SIGNAL(clicked()), snek, SLOT(setToLeft()) );
 	connect ( control.leftPad, SIGNAL(released()), snek, SLOT(setToLeftStop()) );
 	
-	// Launch an food periodically
+	// Launch a food periodically
 	QTimer* foodSpawn = new QTimer(this);
 	connect(foodSpawn, &QTimer::timeout, this, &Game::launchFood);
 	foodSpawn->start(1500);
 	
+	// Launch food periodically
+	QTimer* obstacleSpawn = new QTimer(this);
+	connect(obstacleSpawn,&QTimer::timeout, this, &Game::launchObstables);
+	obstacleSpawn->start(2000);
 	// Check if the game reached end condition or if the speed needs an update
 	QTimer* checkEnd = new QTimer(this);
 	connect(checkEnd, &QTimer::timeout, this, &Game::endGame);
@@ -105,6 +110,14 @@ void Game::launchFood()
 	food->setSharedRenderer(svgRenderer);
 	scene->addItem(food);
 	food->setInitialPos();
+}
+
+void Game::launchObstables()
+{
+	Gate* obstacle = new NumericGate(0);
+	obstacle->setSharedRenderer(svgRenderer);
+	scene->addItem(obstacle);
+	obstacle->setInitialPos(0);
 }
 
 void Game::setSnek()

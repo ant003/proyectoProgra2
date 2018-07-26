@@ -22,9 +22,9 @@ protected:
 	  */
 	QPropertyAnimation* moveAnimation = nullptr;
 	
-	Gate* next;
+	Gate* next = nullptr;
 	
-	Gate* before;
+	Gate* before = nullptr;
 	
 public:
 	/**
@@ -42,6 +42,8 @@ public:
 	 * @details it chose a random initial position for the X axis within the screen, the y axis keeps always on 0
 	 */
 	virtual void setInitialPos(int gateNumber);
+	
+	virtual void setInitialPos();
 	
 	virtual void reactTo();
 	
