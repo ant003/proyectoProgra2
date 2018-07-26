@@ -118,26 +118,9 @@ void Game::launchFood()
 
 void Game::launchObstables()
 {
-	Gate* obstacle1;
-	Gate* obstacle2;
-	Gate* obstacle3;
-	Gate* obstacle4;
-	obstacle1 = new Gate("Number2");
-	obstacle2 = new Gate("RomanVII");
-	obstacle3 = new Gate("CharA");
-	obstacle4 = new Gate("RomanXI");
-	obstacle1->setSharedRenderer(svgRenderer);
-	obstacle2->setSharedRenderer(svgRenderer);
-	obstacle3->setSharedRenderer(svgRenderer);
-	obstacle4->setSharedRenderer(svgRenderer);
-	scene->addItem(obstacle1);
-	scene->addItem(obstacle2);
-	scene->addItem(obstacle3);
-	scene->addItem(obstacle4);
-	obstacle1->setInitialPos(0);
-	obstacle2->setInitialPos(1);
-	obstacle3->setInitialPos(2);
-	obstacle4->setInitialPos(3);
+	GateManager* manager = new GateManager();
+	manager->setUpSharedRenderer(this->svgRenderer);
+	manager->addToScene(this->scene);
 }
 
 void Game::setSnek()

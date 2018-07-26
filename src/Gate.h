@@ -59,6 +59,8 @@ public:
 	
 	void addToScene(QGraphicsScene* scene);
 	
+	void setUpSharedRenderer(QSvgRenderer* svgRenderer);
+	
 private:
 	Gate* gates[4] = {nullptr,nullptr,nullptr,nullptr};
 	

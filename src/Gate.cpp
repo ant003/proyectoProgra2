@@ -49,10 +49,18 @@ void Gate::setAdjacent( Gate* before, Gate* next )
 	this->before = before;
 }
 
+#include <iostream>
+
 GateManager::GateManager()
 {
 	for(int index = 0; index < 4; ++index)
 		gates[index] = generateGate();
+}
+
+void GateManager::setUpSharedRenderer(QSvgRenderer* svgRenderer)
+{
+	for(int index = 0; index < 4; ++index)
+		gates[index]->setSharedRenderer(svgRenderer);
 }
 
 void GateManager::addToScene(QGraphicsScene *scene)
@@ -66,44 +74,54 @@ void GateManager::addToScene(QGraphicsScene *scene)
 
 Gate* GateManager::generateGate()
 { // 7 XI F N 2 XIX 4 VII A
-	Gate* newGate = nullptr;
-	int value;
+	Gate* product = nullptr;
+	int value = static_cast<int>((qrand() % 9));
+	std::cout << value << std::endl;
 	switch(value)
 	{
 		case(0):
-			newGate = new Gate("Number7");
-			newGate->setValue(7);
+			product = new Gate("Number7");
+	std::cout << "generando 7" << std::endl;
+			product->setValue(-7);
 		break;
 		case(1):
-			newGate = new Gate("RomanXI");
-			newGate->setValue(11);
+			product = new Gate("RomanXI");
+	std::cout << "generando XI" << std::endl;
+			product->setValue(-11);
 		case(2):
-			newGate = new Gate("CharF");
-			newGate->setValue(7);
+			product = new Gate("CharF");
+	std::cout << "generando F" << std::endl;
+			product->setValue(-7);
 		break;
 		case(3):
-			newGate = new Gate("CharN");
-			newGate->setValue(16);
+			product = new Gate("CharN");
+	std::cout << "generando N" << std::endl;
+			product->setValue(-16);
 		break;
 		case(4):
-			newGate = new Gate("Number2");
-			newGate->setValue(2);
+			product = new Gate("Number2");
+	std::cout << "generando 2" << std::endl;
+			product->setValue(-2);
 		break;
 		case(5):
-			newGate = new Gate("RomanXIX");
-			newGate->setValue(19);
+			product = new Gate("RomanXIX");
+	std::cout << "generando XIX" << std::endl;
+			product->setValue(-19);
 		case(6):
-			newGate = new Gate("Number4");
-			newGate->setValue(4);
+			product = new Gate("Number4");
+	std::cout << "generando 4" << std::endl;
+			product->setValue(-4);
 		break;
 		case(7):
-			newGate = new Gate("RomanVII");
-			newGate->setValue(7);
+			product = new Gate("RomanVII");
+	std::cout << "generando VII" << std::endl;
+			product->setValue(-7);
 		break;
 		case(8):
-			newGate = new Gate("CharA");
-			newGate->setValue(1);
+			product = new Gate("CharA");
+	std::cout << "generando A" << std::endl;
+			product->setValue(-1);
 		break;
 	}
-	return newGate;
+	return product;
 }
